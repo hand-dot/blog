@@ -1,132 +1,85 @@
-import React from 'react'
-import { graphql } from 'gatsby';
-import { get } from 'lodash'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTags } from '@fortawesome/free-solid-svg-icons'
+import React from "react";
+import Helmet from "react-helmet";
+import { Link, graphql } from "gatsby";
+import withLayout from "../components/withLayout";
+import PostLink from "../components/PostLink";
 
-import Layout from '../components/layout';
-import Title from '../components/title';
-import PostList from '../components/post-list';
-import Tag from '../components/tag'
-import styles from './tags.module.scss';
-import TagList from '../components/tag-list';
-
-class TagsTemplate extends React.Component {
-
+class TagRoute extends React.Component {
   render() {
-    // マージして降順で並び替え
-    // gatsby-node.jsで2つのノードに共通のfieldsを追加しているため条件分岐なし
-    const posts = [
-      ...get(this, 'props.data.filteredRemarkPosts.edges', []),
-      ...get(this, 'props.data.filteredQiitaPosts.edges', [])
-    ]
-    .sort((a,b) => {
-      const aDate = new Date(a.node.fields.date)
-      const bDate = new Date(b.node.fields.date)
-
-      if( aDate < bDate ) return 1
-      if( aDate > bDate ) return -1
-      return 0
-    })
-
-
-    const totalCount =
-      posts && posts.length
-        ? posts.length
-        : 0
-
-
-    const targetTag =  <Tag value={this.props.pageContext.tag} />
-
-    const tagSearchResult = (
-      <div className={styles.tag_search_result}>
-        <FontAwesomeIcon icon={faTags} className={styles.tag_icon}/>
-        {targetTag}
-        {totalCount}件
-      </div>
-    );
-
-    const postList =
-      totalCount > 0
-        ? <PostList postFields={posts.map(post => post.node.fields)} />
-        : <div className={styles.no_post}>指摘したタグの記事はありません。</div>
-
-
-    const allTags = [
-      ...get(this, 'props.data.allRemarkTags.edges'),
-      ...get(this, 'props.data.allQiitaTags.edges')
-    ]
+    const { data } = this.props;
+    const { edges: posts } = data.allMarkdownRemark;
+    const tag = this.props.pageContext.tag;
+    const title = this.props.data.site.siteMetadata.title;
+    const totalCount = this.props.data.allMarkdownRemark.totalCount;
+    const tagHeader = `“${tag}”のタグがつけられた記事が${totalCount}件あります。`;
 
     return (
-      <Layout location={this.props.location}>
-        <div>
-          <Title tag={this.props.pageContext.tag} />
-          {tagSearchResult}
-          {postList}
-        <TagList posts={allTags} />
-        </div>
-      </Layout>
+      <>
+        <section className="section" style={{ marginTop: 52 }}>
+          <Helmet title={`${tag} - ${title}`} />
+          <div className="container content">
+            <div className="columns">
+              <div
+                className="column is-10 is-offset-1"
+                style={{ marginBottom: "6rem" }}
+              >
+                <h3 className="title is-size-4 is-bold-light">{tagHeader}</h3>
+                {posts.map(({ node: post }) => (
+                  <PostLink
+                    key={post.fields.slug}
+                    thumbnail={post.frontmatter.thumbnail}
+                    title={post.frontmatter.title}
+                    date={post.frontmatter.date}
+                    description={post.frontmatter.description}
+                    link={post.fields.slug}
+                    linkText="続きを読む"
+                  />
+                ))}
+                <p style={{ marginTop: "1.5rem" }}>
+                  <Link to="/tags/">全てのタグを見る</Link>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </>
     );
   }
 }
 
-export default TagsTemplate;
+export default withLayout(TagRoute);
 
-export const pageQuery = graphql`
-  query($tag: String) {
-
-    filteredRemarkPosts: allMarkdownRemark(
-      limit: 1000,
-      filter: { fields: { tags: { in: [$tag] } } },
-      sort: { fields: [fields___date], order: DESC }
+export const tagPageQuery = graphql`
+  query TagPage($tag: String) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(
+      limit: 1000
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
+      totalCount
       edges {
         node {
+          id
           fields {
             slug
+          }
+          frontmatter {
             title
-            excerpt
-            date
-            tags
-          }
-        }
-      }
-    }
-
-    filteredQiitaPosts: allQiitaPost(
-      limit: 1000,
-      filter: { fields: { tags: { in: [$tag] } } },
-      sort: { fields: [fields___date], order: DESC }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-            title
-            excerpt
-            date
-            tags
-          }
-        }
-      }
-    }
-
-
-    allRemarkTags: allMarkdownRemark {
-      edges {
-        node {
-          fields {
-            tags
-          }
-        }
-      }
-    }
-
-    allQiitaTags: allQiitaPost {
-      edges {
-        node {
-          fields {
-            tags
+            description
+            templateKey
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 128, quality: 90) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+            date(formatString: "YYYY/MM/DD")
           }
         }
       }

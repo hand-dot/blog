@@ -1,8 +1,3 @@
-# My blog powered by Gatsby
+# labelmake.jp
 
-* [https://takumon.com/](https://takumon.com/)
-* [Gatsby Showcase](https://www.gatsbyjs.org/showcase/takumon.com)
-
-![blogimage](./blogimage.png)
-
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b1cfe4a6-8e06-47f5-bf75-42ade9ed28c1/deploy-status)](https://app.netlify.com/sites/labelmake/deploys)

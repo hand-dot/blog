@@ -1,0 +1,84 @@
+@import "~bulma/sass/utilities/initial-variables"
+@import "~slick-carousel/slick/slick.css"
+@import "~slick-carousel/slick/slick-theme.css"
+
+$primary: #6C63FF
+$primary-invert: #fff
+
+.content .taglist
+  list-style: none
+  margin-bottom: 0
+  margin-left: 0
+  margin-right: 1.5rem
+  margin-top: 1.5rem
+  display: flex
+  flex-wrap: wrap
+  justify-content: left
+  align-items: center
+  li
+    padding: 0 1rem 1rem 1rem
+    margin-bottom: 1.5rem
+    margin-top: 0
+
+// Helper Classes
+.full-width-image-container
+  width: 100vw
+  height: 350px
+  position: relative
+  left: 50%
+  right: 50%
+  margin: 0 -50vw
+  background-size: cover
+  background-position: bottom
+  display: flex
+  justify-content: center
+  align-items: center
+
+.margin-top-0
+  margin-top: 0 !important
+
+.is-256x171
+  width: 256px
+  height: 171px
+
+.is-96x54
+  width: 96px
+  height: 54px
+
+.gatsby-resp-image-image
+    border: 1px solid #eee
+
+.blog.content p:not(:last-child)
+    margin-bottom: 23px
+    font-size: 14.5px
+
+@keyframes fadeInImg
+ from
+  opacity: 0
+ to
+  opacity: 1
+
+.img-loading
+   opacity: 0
+   width: 100%
+   height: auto
+.img-loaded
+   animation: fadeInImg cubic-bezier(0.23, 1, 0.32, 1) 1
+   position: relative
+   opacity: 0
+   animation-fill-mode: forwards
+   animation-duration: 0.5s
+   animation-delay: 0.1s
+
+.slick-prev:before, .slick-next:before 
+    font-size: 20px
+    line-height: 1
+    opacity: .75
+    color: #999
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+@import "~bulma"
+
+a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active 
+    background-color: transparent

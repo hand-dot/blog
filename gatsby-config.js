@@ -1,183 +1,148 @@
-require('dotenv').config()
+const SENTRY_DSN_URL = process.env.SENTRY_DSN_URL || "none";
+console.log(`variable SENTRY_DSN_URL is : '${SENTRY_DSN_URL}'`);
+const GOOGLE_ANALYTICS_TRACKING_ID =
+  process.env.GOOGLE_ANALYTICS_TRACKING_ID || "none";
+console.log(
+  `variable GOOGLE_ANALYTICS_TRACKING_ID is : '${GOOGLE_ANALYTICS_TRACKING_ID}'`
+);
+const GOOGLE_TAGMANAGER_ID = process.env.GOOGLE_TAGMANAGER_ID || "none";
+console.log(`variable GOOGLE_TAGMANAGER_ID is : '${GOOGLE_TAGMANAGER_ID}'`);
+const HOTJAR_ID = process.env.HOTJAR_ID || "none";
+console.log(`variable HOTJAR_ID is : '${HOTJAR_ID}'`);
+const HOTJAR_SNIPPET_VERSION = process.env.HOTJAR_SNIPPET_VERSION || "none";
+console.log(`variable HOTJAR_SNIPPET_VERSION is : '${HOTJAR_SNIPPET_VERSION}'`);
+const HEADWAY_ACCOUNT = process.env.HEADWAY_ACCOUNT || "none";
+console.log(`variable HEADWAY_ACCOUNT is : '${HEADWAY_ACCOUNT}'`);
+const BASE_CLIENT_ID = process.env.BASE_CLIENT_ID || "none";
+console.log(`variable BASE_CLIENT_ID is : '${BASE_CLIENT_ID}'`);
+const BASE_CLIENT_SECRET = process.env.BASE_CLIENT_SECRET || "none";
+console.log(`variable BASE_CLIENT_SECRET is : '${BASE_CLIENT_SECRET}'`);
+const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:8000"
+    : "https://labelmake.jp";
 
 module.exports = {
   siteMetadata: {
-    title: 'Takumon Blog',
-    author: 'Takuto Inoue',
-    description: "SIer's tech blog powered by Gatsby",
-    siteUrl: 'https://takumon.com',
+    lang: "ja",
+    title: "labelmake.jp",
+    description:
+      "labelmake.jpは宛名ラベルや差し込み印刷を無料で作成できるサービスです。スマートフォンでもご利用可能で、会員登録やインストール、デザインは不要です。利用用途や好みに合わせて様々なテンプレートから選択し、直感的かつ効率的に作成することができます。PDFをダウンロードして家庭用プリンターやコンビニで印刷してお使いください。",
+    canonicalUrl: BASE_URL,
+    image: "https://labelmakejp.firebaseapp.com/labelmake.jpg",
+    author: {
+      name: "hand-dot",
+      minibio: `
+        <strong>hand-dot</strong>は東京都内在住のJavascriptが好きな開発者です。`
+    },
+    organization: {
+      name: "labelmake.jp",
+      url: BASE_URL,
+      logo: "https://labelmakejp.firebaseapp.com/labelmake.jpg"
+    },
+    social: {
+      twitter: "@labelmake",
+      fbAppID: ""
+    },
+    thirdParty: {
+      headway: HEADWAY_ACCOUNT,
+      base: {
+        client_id: BASE_CLIENT_ID,
+        client_secret: BASE_CLIENT_SECRET
+      }
+    }
   },
   plugins: [
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sass",
     {
-      resolve: `gatsby-source-filesystem`,
+      // keep as first gatsby-source-filesystem plugin for gatsby image support
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/static/img`,
+        name: "uploads"
+      }
+    },
+    {
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/pages`,
-        name: 'pages',
-      },
+        name: "pages"
+      }
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        path: `${__dirname}/src/img`,
+        name: "images"
+      }
     },
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
-          `gatsby-remark-katex`,
-          `gatsby-remark-graphviz`,
-          `gatsby-remark-code-titles`,
+          {
+            resolve: "gatsby-remark-relative-images",
+            options: {
+              name: "uploads"
+            }
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
-            },
+              maxWidth: 960
+            }
           },
-          `gatsby-remark-embed-youtube`,
+          `gatsby-remark-code-titles`,
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: "gatsby-remark-prismjs",
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          `gatsby-remark-autolink-headers`,
-          {
-            resolve: 'gatsby-remark-embed-snippet',
-            options: {
-              classPrefix: 'language-',
-              directory: `${__dirname}/examples/`,
-            },
+              inlineCodeMarker: "÷"
+            }
           },
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: "gatsby-remark-external-links",
             options: {
-              classPrefix: 'language-',
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: true,
-            },
-          },
-          'gatsby-remark-copy-linked-files',
-          {
-            resolve: 'gatsby-remark-emojis',
-            options: {
-              active: true,
-              size: 64,
-              styles: {
-                display: 'inline',
-                margin: '0',
-                'margin-top': '1px',
-                position: 'relative',
-                top: '5px',
-                width: '25px',
-              },
-            },
-          },
-        ],
-      },
+              target: "_blank"
+            }
+          }
+        ]
+      }
     },
     {
-      resolve: `gatsby-source-qiita`,
+      resolve: "gatsby-plugin-netlify-cms",
       options: {
-        accessToken: process.env.ACCESS_TOKEN,
-        userName: process.env.USER_NAME,
-        excludedPostIds: process.env.EXCLUDED_POST_IDS
-          ? process.env.EXCLUDED_POST_IDS.split(',')
-          : [],
-      },
+        modulePath: `${__dirname}/src/cms/cms.js`
+      }
     },
-    `gatsby-remark-headings-detail`,
-    `gatsby-remark-and-qiita`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
+    {
+      resolve: "gatsby-plugin-sentry",
+      options: {
+        dsn: SENTRY_DSN_URL
+      }
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-93478785-2`,
-      },
+        trackingId: GOOGLE_ANALYTICS_TRACKING_ID,
+        cookieDomain: "labelmake.jp"
+      }
     },
-    `gatsby-plugin-feed`,
-    `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: `gatsby-plugin-google-tagmanager`,
       options: {
-        name: 'Takumon Blog',
-        short_name: 'Takumon Blog',
-        start_url: '/?utm_source=homescreen',
-        background_color: '#333',
-        theme_color: '#d23d29',
-        display: 'minimal-ui',
-        icons: [
-          {
-            src: 'icons/icon-72x72.png',
-            sizes: '72x72',
-            type: 'image/png',
-          },
-          {
-            src: 'icons/icon-96x96.png',
-            sizes: '96x96',
-            type: 'image/png',
-          },
-          {
-            src: 'icons/icon-128x128.png',
-            sizes: '128x128',
-            type: 'image/png',
-          },
-          {
-            src: 'icons/icon-144x144.png',
-            sizes: '144x144',
-            type: 'image/png',
-          },
-          {
-            src: 'icons/icon-152x152.png',
-            sizes: '152x152',
-            type: 'image/png',
-          },
-          {
-            src: 'icons/icon-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: 'icons/icon-384x384.png',
-            sizes: '384x384',
-            type: 'image/png',
-          },
-          {
-            src: 'icons/icon-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-        ],
-      },
+        id: GOOGLE_TAGMANAGER_ID
+      }
     },
-    `gatsby-plugin-remove-serviceworker`,
-    `gatsby-plugin-twitter`,
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-sitemap`,
     {
-      resolve: 'gatsby-plugin-typography',
+      resolve: `gatsby-plugin-hotjar`,
       options: {
-        pathToConfigModule: 'src/utils/typography',
-      },
+        id: +HOTJAR_ID,
+        sv: +HOTJAR_SNIPPET_VERSION
+      }
     },
-    `gatsby-plugin-catch-links`,
-    {
-      resolve: `gatsby-plugin-nprogress`,
-      options: {
-        color: `blue`,
-        showSpinner: true,
-      },
-    },
-    `gatsby-plugin-no-sourcemaps`,
-    `gatsby-plugin-lodash`,
-    {
-      resolve: `gatsby-plugin-webpack-bundle-analyzer`,
-      options: {
-        openAnalyzer: false,
-      },
-    },
-  ],
-}
+    "gatsby-plugin-netlify" // make sure to keep it last in the array
+  ]
+};

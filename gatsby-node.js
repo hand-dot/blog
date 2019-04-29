@@ -1,171 +1,103 @@
-const _ = require('lodash')
-const Promise = require('bluebird')
-const path = require('path')
-const _flow = require('lodash/fp/flow')
-const _forEach = require('lodash/fp/forEach')
-const _uniq = require('lodash/fp/uniq')
-const _flatMap = require('lodash/fp/flatMap')
-const relatedPost = require('./gatsby-related-post')
+const _ = require("lodash");
+const path = require("path");
+const { createFilePath } = require("gatsby-source-filesystem");
+const { fmImagesToRelative } = require("gatsby-remark-relative-images");
 
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions;
+  const blogPost = path.resolve(`./src/templates/blog-post.js`);
 
-
-const POST_TYPE = {
-  ORIGINAL: 'original',
-  QIITA: 'qiita'
-}
-
-
-// onCreateNodeより後に実行される
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
-
-  return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/blog-post.js');
-    const qiitaPost = path.resolve('./src/templates/qiita-post.js');
-    const tagPage =  path.resolve('./src/templates/tags.js');
-
-    resolve(
-      graphql(
-        `
-          {
-            allMarkdownRemark(sort: { fields: [fields___date], order: DESC }, limit: 1000) {
-              edges {
-                node {
-                  fields {
-                    slug
-                    title
-                    date
-                    excerpt
-                    tags
-                    keywords
-                    thumbnail
-                  }
-                }
-              }
+  return graphql(`
+    {
+      allMarkdownRemark(limit: 1000) {
+        edges {
+          node {
+            id
+            fields {
+              slug
             }
-            allQiitaPost(sort: { fields: [fields___date], order: DESC }, limit: 1000) {
-              edges {
-                node {
-                  fields {
-                    slug
-                    title
-                    date
-                    excerpt
-                    tags
-                    keywords
-                    thumbnail
-                  }
-                  id
-                  title
-                  rendered_body
-                  body
-                  comments_count
-                  created_at
-                  likes_count
-                  reactions_count
-                }
-              }
+            frontmatter {
+              tags
+              templateKey
             }
           }
-        `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
         }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      result.errors.forEach(e => console.error(e.toString()));
+      return Promise.reject(result.errors);
+    }
 
+    const posts = result.data.allMarkdownRemark.edges;
 
-        // オリジナル記事とQiitaの記事を1つのリストにする
-        const originalPosts = result.data.allMarkdownRemark.edges.map(p => {
-          return {
-            type: POST_TYPE.ORIGINAL,
-            date: new Date(p.node.fields.date),
-            node: p.node
-          }
-        })
+    posts.forEach(edge => {
+      const id = edge.node.id;
+      createPage({
+        path: edge.node.fields.slug,
+        tags: edge.node.frontmatter.tags,
+        component: blogPost,
+        // additional data can be passed via context
+        context: {
+          id
+        }
+      });
+    });
 
-        const qiitaPosts = result.data.allQiitaPost.edges.map(p => {
-          return {
-            type: POST_TYPE.QIITA,
-            date: new Date(p.node.fields.date),
-            node: p.node
-          }
-        })
+    // Create blog post list pages
+    const postsPerPage = 5;
+    const numPages = Math.ceil(posts.length / postsPerPage);
 
-        const posts = [...originalPosts, ...qiitaPosts].sort((a,b) => {
-          if( a.date < b.date ) return 1
-          if( a.date > b.date ) return -1
-          return 0
-        })
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/` : `/${i + 1}`,
+        component: path.resolve("./src/templates/blog-list.js"),
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1
+        }
+      });
+    });
 
-        const allPostNodes = _.map(posts, ({node}) => node)
+    // Tag pages:
+    let tags = [];
+    // Iterate through each post, putting all found tags into `tags`
+    posts.forEach(edge => {
+      if (_.get(edge, `node.frontmatter.tags`)) {
+        tags = tags.concat(edge.node.frontmatter.tags);
+      }
+    });
+    // Eliminate duplicate tags
+    tags = _.uniq(tags);
 
-        // 記事詳細ページ生成
-        _.each(posts, ({type, node}, index) => {
+    // Make tag pages
+    tags.forEach(tag => {
+      const tagPath = `/tags/${_.kebabCase(tag)}/`;
 
-          // 最大5つ関連記事を取得
-          const relatedPosts = relatedPost.extractRelatedPosts(allPostNodes, node, relatedPost.defaultConfig).slice(0,5)
-          const latestPosts = allPostNodes.slice(0,5)
+      createPage({
+        path: tagPath,
+        component: path.resolve(`src/templates/tags.js`),
+        context: {
+          tag
+        }
+      });
+    });
+  });
+};
 
-          if (type === POST_TYPE.ORIGINAL) {
-            createPage({
-              path: node.fields.slug,
-              component: blogPost,
-              context: {
-                slug: node.fields.slug,
-                relatedPosts,
-                latestPosts,
-                ...previouseAndNext(posts, index)
-              },
-            })
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
+  fmImagesToRelative(node); // convert image paths for gatsby images
 
-          } else if (type === POST_TYPE.QIITA) {
-            createPage({
-              path: node.fields.slug,
-              component: qiitaPost,
-              context: {
-                slug: node.fields.slug,
-                relatedPosts,
-                latestPosts,
-                ...previouseAndNext(posts, index)
-              },
-            })
-
-          } else {
-            throw new Error(`Unexpected post type = ${type}`)
-          }
-        })
-
-
-        // タグ別一覧ページ生成
-        _flow(
-          _flatMap(post => post.node.fields.tags),
-          _uniq(),
-          _forEach(tag => {
-            createPage({
-              path: `/tags/${_.kebabCase(tag)}/`,
-              component: tagPage,
-              context: {
-                tag
-              },
-            })
-          })
-        )(posts)
-      })
-    )
-  })
-}
-
-
-/**
- * 指定したインデックスの記事の前後の記事を取得する.
- *
- * @param {Array} posts 記事一覧
- * @param {int} index 対象記事のインデックス
- */
-function previouseAndNext(posts, index) {
-  return {
-    previous: index === posts.length - 1 ? null : posts[index + 1].node,
-    next: index === 0 ? null : posts[index - 1].node
+  if (node.internal.type === `MarkdownRemark`) {
+    const value = createFilePath({ node, getNode });
+    createNodeField({
+      name: `slug`,
+      node,
+      value
+    });
   }
-}
+};
