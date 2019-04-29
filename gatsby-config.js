@@ -20,28 +20,28 @@ console.log(`variable BASE_CLIENT_SECRET is : '${BASE_CLIENT_SECRET}'`);
 const BASE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:8000"
-    : "https://labelmake.jp";
+    : "https://hand-dot.com";
 
 module.exports = {
   siteMetadata: {
     lang: "ja",
-    title: "labelmake.jp",
+    title: "hand-dot.com",
     description:
-      "labelmake.jpは宛名ラベルや差し込み印刷を無料で作成できるサービスです。スマートフォンでもご利用可能で、会員登録やインストール、デザインは不要です。利用用途や好みに合わせて様々なテンプレートから選択し、直感的かつ効率的に作成することができます。PDFをダウンロードして家庭用プリンターやコンビニで印刷してお使いください。",
+      "hand-dot.comはプログラマー,デザイナーのための情報を発信・解説するメディアです。",
     canonicalUrl: BASE_URL,
-    image: "https://labelmakejp.firebaseapp.com/labelmake.jpg",
+    image: "https://labelmakejp.firebaseapp.com/labelmake.jpg", // FIXME
     author: {
       name: "hand-dot",
       minibio: `
         <strong>hand-dot</strong>は東京都内在住のJavascriptが好きな開発者です。`
     },
     organization: {
-      name: "labelmake.jp",
+      name: "hand-dot.com",
       url: BASE_URL,
-      logo: "https://labelmakejp.firebaseapp.com/labelmake.jpg"
+      logo: "https://labelmakejp.firebaseapp.com/labelmake.jpg" // FIXME
     },
     social: {
-      twitter: "@labelmake",
+      twitter: "@kyouhei_fukuda",
       fbAppID: ""
     },
     thirdParty: {
@@ -127,7 +127,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: GOOGLE_ANALYTICS_TRACKING_ID,
-        cookieDomain: "labelmake.jp"
+        cookieDomain: "hand-dot.com"
       }
     },
     {

@@ -2,25 +2,31 @@ import React from "react";
 import { Link } from "gatsby";
 import Divider from "./Divider";
 import Slash from "./Slash";
+import { DOMAIN } from "../constants";
 
 const Footer = () => (
   <div>
     <Divider />
-    <footer className="footer">
+    <footer className="footer" style={{ backgroundColor: "#333c44" }}>
       <div className="container">
         <div className="content is-size-7" style={{ marginBottom: "1rem" }}>
           <p>
-            <Link to="/">&copy; 2019 labelmake.jp</Link>
+            <Link style={{ color: "#fff" }} to="/">
+              &copy; 2019 {DOMAIN}
+            </Link>
           </p>
-          <Link to="/terms">利用規約</Link>
+          <Link style={{ color: "#fff" }} to="/terms">
+            利用規約
+          </Link>
           <Slash />
-          <Link to="/privacy">プライバシーポリシー</Link>
+          <Link style={{ color: "#fff" }} to="/privacy">
+            プライバシーポリシー
+          </Link>
           <Slash />
-          <Link to="/contact">お問い合わせ</Link>
+          <Link style={{ color: "#fff" }} to="/contact">
+            お問い合わせ
+          </Link>
         </div>
-        <p className="is-size-7">
-          動作環境: Google Chrome, Firefox, Safari, Edge, Internet Explorer 11
-        </p>
       </div>
     </footer>
   </div>

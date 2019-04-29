@@ -1,6 +1,7 @@
 import React from "react";
 import withLayout from "../../components/withLayout";
 import { Link } from "gatsby";
+import { DOMAIN } from "../../constants";
 
 const Terms = () => (
   <section className="section">
@@ -8,7 +9,8 @@ const Terms = () => (
       <div className="content">
         <h1>利用規約</h1>
         <p>
-          この利用規約（以下，「本規約」といいます。）は，labelmake.jp（以下，「当社」といいます。）がこのウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。
+          この利用規約（以下，「本規約」といいます。）は，{DOMAIN}
+          （以下，「当社」といいます。）がこのウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。
         </p>
 
         <h2>第1条（適用）</h2>

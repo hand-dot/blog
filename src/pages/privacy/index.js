@@ -1,6 +1,7 @@
 import React from "react";
 import withLayout from "../../components/withLayout";
 import { Link } from "gatsby";
+import { DOMAIN } from "../../constants";
 
 const Privacy = () => (
   <section className="section">
@@ -8,7 +9,8 @@ const Privacy = () => (
       <div className="content">
         <h1>プライバシーポリシー</h1>
         <p>
-          labelmake.jp（以下，「当社」といいます。）は，本ウェブサイト上で提供するサービス（以下,「本サービス」といいます。）における，ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。
+          {DOMAIN}
+          （以下，「当社」といいます。）は，本ウェブサイト上で提供するサービス（以下,「本サービス」といいます。）における，ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。
         </p>
 
         <h2>第1条（個人情報）</h2>

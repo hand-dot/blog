@@ -45,7 +45,7 @@ const Page = ({
                 <div style={{ textAlign: "center" }}>
                   {title && (
                     <h2
-                      className="has-text-weight-nomal is-size-4"
+                      className="has-text-weight-light is-size-4"
                       style={{
                         color: "white",
                         padding: "0.5rem 2rem"

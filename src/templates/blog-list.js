@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import Page from "../components/Page";
 import withLayout from "../components/withLayout";
-import PostLink from "../components/PostLink";
+import PostList from "../components/PostList";
 import Pagination from "../components/Pagination";
 
 class BlogIndex extends React.Component {
@@ -18,20 +18,10 @@ class BlogIndex extends React.Component {
     return (
       <Page
         title="Build house with JavaScript"
-        description="hand-dotのブログへようこそ"
+        description="hand-dotのポートフォリオサイトです。"
       >
         <>
-          {posts.map(({ node: post }) => (
-            <PostLink
-              key={post.fields.slug}
-              thumbnail={post.frontmatter.thumbnail}
-              title={post.frontmatter.title}
-              date={post.frontmatter.date}
-              description={post.frontmatter.description}
-              link={post.fields.slug}
-              linkText="続きを読む"
-            />
-          ))}
+          <PostList posts={posts} />
           <Pagination
             prevPage={prevPage}
             numPages={numPages}

@@ -4,6 +4,7 @@ import SEO from "./SEO/SEO";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { isPC } from "../util";
+import { DOMAIN } from "../constants";
 import "./all.sass";
 import "./all.css";
 
@@ -20,7 +21,7 @@ export default (Component, title) => {
       return (
         <div style={{ backgroundColor: "#d6ddff0d" }}>
           <SEO />
-          {title && <Helmet title={`${title} - labelmake.jp`} />}
+          {title && <Helmet title={`${title} - ${DOMAIN}`} />}
           <Navbar isPC={isPC} />
           <Component {...this.props} {...this.state} />
           <Footer />

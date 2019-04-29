@@ -10,6 +10,7 @@ import {
   LineIcon,
   EmailIcon
 } from "react-share";
+import { DOMAIN } from "../constants";
 
 const margin = { margin: "0.75rem 1rem" };
 
@@ -41,7 +42,7 @@ Share.propTypes = {
 };
 
 Share.defaultProps = {
-  url: "https://labelmake.jp",
+  url: `https://${DOMAIN}`,
   center: false
 };
 

@@ -28,11 +28,10 @@ export const BlogPostTemplate = ({
             <div className="column is-10 is-offset-1">
               <div className="blog content">
                 <h1
-                  className="title has-text-weight-nomal is-size-4"
+                  className="title is-size-4"
                   style={{
                     paddingBottom: "1rem",
-                    borderBottom:
-                      "2px solid #6c63ff"
+                    borderBottom: "2px solid #6c63ff"
                   }}
                 >
                   {title}
@@ -43,14 +42,14 @@ export const BlogPostTemplate = ({
                 <p style={{ textAlign: "center", margin: `4rem` }}>...</p>
                 {/* share */}
                 <div style={{ marginTop: `2rem` }}>
-                  <h4>シェア</h4>
+                  <h4 className="is-size-5 has-text-weight-light">シェア</h4>
                   <Share url={encodeURI(url)} />
                 </div>
                 <Divider getterBottom />
                 {/* tag */}
                 {tags && tags.length ? (
                   <div style={{ marginTop: `2rem` }}>
-                    <h4>タグ</h4>
+                    <h4 className="is-size-5 has-text-weight-light">タグ</h4>
                     <ul className="taglist">
                       {tags.map(tag => (
                         <li key={tag + `tag`}>

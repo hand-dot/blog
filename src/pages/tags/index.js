@@ -11,7 +11,7 @@ const TagsPage = ({
 }) => (
   <Page
     title="About"
-    description="サブプロジェクトや開発スキルを記載しています。"
+    description="開発スキルやサブプロジェクトを記載しています。"
   >
     <ul className="taglist">
       {group.map(tag => (
