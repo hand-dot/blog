@@ -45,7 +45,7 @@ const NavItem = ({ icon = null, label = "", link = "", isPC }) => (
     <span
       style={{ paddingLeft: 5 }}
       className="has-text-weight-light"
-      style={{ color: "#fff" }}
+      style={{ color: isPC ? "#fff" : "#999" }}
     >
       {label}
     </span>
@@ -65,7 +65,9 @@ const NavItemForOutSide = ({ icon = null, label = "", link = "", isPC }) => (
         <img src={icon} alt={label} style={{ width: 24 }} />
       </span>
     )}
-    <span style={{ paddingLeft: 5, color: "#fff" }}>{label}</span>
+    <span style={{ paddingLeft: 5, color: isPC ? "#fff" : "#999" }}>
+      {label}
+    </span>
   </a>
 );
 
@@ -86,6 +88,14 @@ const NavItems = ({ isPC }) => (
       />
     </div>
     {isPC && <Notification />}
+  </>
+);
+
+const Hamburger = () => (
+  <>
+    <span style={{ color: "#fff" }} aria-hidden="true" />
+    <span style={{ color: "#fff" }} aria-hidden="true" />
+    <span style={{ color: "#fff" }} aria-hidden="true" />
   </>
 );
 
@@ -148,9 +158,7 @@ class Navbar extends Component {
                       data-target="navbar"
                       onClick={() => this.setState({ active: !active })}
                     >
-                      <span aria-hidden="true" />
-                      <span aria-hidden="true" />
-                      <span aria-hidden="true" />
+                      <Hamburger />
                     </span>
                     {!isPC && <Notification />}
                   </div>
