@@ -13,10 +13,7 @@ const HOTJAR_SNIPPET_VERSION = process.env.HOTJAR_SNIPPET_VERSION || "none";
 console.log(`variable HOTJAR_SNIPPET_VERSION is : '${HOTJAR_SNIPPET_VERSION}'`);
 const HEADWAY_ACCOUNT = process.env.HEADWAY_ACCOUNT || "none";
 console.log(`variable HEADWAY_ACCOUNT is : '${HEADWAY_ACCOUNT}'`);
-const BASE_CLIENT_ID = process.env.BASE_CLIENT_ID || "none";
-console.log(`variable BASE_CLIENT_ID is : '${BASE_CLIENT_ID}'`);
-const BASE_CLIENT_SECRET = process.env.BASE_CLIENT_SECRET || "none";
-console.log(`variable BASE_CLIENT_SECRET is : '${BASE_CLIENT_SECRET}'`);
+
 const BASE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:8000"
@@ -29,7 +26,8 @@ module.exports = {
     description:
       "hand-dot.comはプログラマー,デザイナーのための情報を発信・解説するメディアです。",
     canonicalUrl: BASE_URL,
-    image: "https://labelmakejp.firebaseapp.com/labelmake.jpg", // FIXME
+    image:
+      "https://repository-images.githubusercontent.com/183037985/a0345380-6b6a-11e9-91aa-2aea8dab60a0",
     author: {
       name: "hand-dot",
       minibio: `
@@ -38,18 +36,15 @@ module.exports = {
     organization: {
       name: "hand-dot.com",
       url: BASE_URL,
-      logo: "https://labelmakejp.firebaseapp.com/labelmake.jpg" // FIXME
+      logo:
+        "https://repository-images.githubusercontent.com/183037985/a0345380-6b6a-11e9-91aa-2aea8dab60a0"
     },
     social: {
       twitter: "@kyouhei_fukuda",
       fbAppID: ""
     },
     thirdParty: {
-      headway: HEADWAY_ACCOUNT,
-      base: {
-        client_id: BASE_CLIENT_ID,
-        client_secret: BASE_CLIENT_SECRET
-      }
+      headway: HEADWAY_ACCOUNT
     }
   },
   plugins: [
