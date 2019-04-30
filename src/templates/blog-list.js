@@ -17,8 +17,8 @@ class BlogIndex extends React.Component {
 
     return (
       <Page
-        title="Build house with JavaScript"
-        description="hand-dotのポートフォリオサイトです。"
+        title="Article"
+        description="日々のLog"
       >
         <>
           <PostList posts={posts} />
