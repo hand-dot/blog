@@ -145,3 +145,6 @@
    overflow: auto;
  }
  
+.gatsby-code-title {
+  font-size: small
+}
