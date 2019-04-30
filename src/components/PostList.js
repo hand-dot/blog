@@ -8,7 +8,7 @@ const PostList = ({ posts }) => (
       .reduce(
         (table, item) => {
           const last = table[table.length - 1];
-          if (last.length === 2) {
+          if (last.length === 3) {
             table.push([item]);
             return table;
           }

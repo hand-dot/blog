@@ -10,8 +10,8 @@ const TagsPage = ({
   }
 }) => (
   <Page
-    title="About"
-    description="開発スキルやサブプロジェクトを記載しています。"
+    title="Tag"
+    description="タグから各記事に飛ぶことができます。"
   >
     <ul className="taglist">
       {group.map(tag => (

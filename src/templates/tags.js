@@ -23,7 +23,7 @@ class TagRoute extends React.Component {
                 className="column is-10 is-offset-1"
                 style={{ marginBottom: "6rem" }}
               >
-                <h3 className="title is-size-4 is-bold-light">{tagHeader}</h3>
+                <h3 className="title is-size-4 has-text-weight-light">{tagHeader}</h3>
                 <PostList posts={posts} />
                 <p style={{ marginTop: "1.5rem" }}>
                   <Link to="/tags/">全てのタグを見る</Link>
@@ -64,7 +64,7 @@ export const tagPageQuery = graphql`
             templateKey
             thumbnail {
               childImageSharp {
-                fluid(maxWidth: 128, quality: 90) {
+                fluid(maxWidth: 512, quality: 90) {
                   ...GatsbyImageSharpFluid
                 }
               }

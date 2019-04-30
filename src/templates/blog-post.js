@@ -8,6 +8,25 @@ import Divider from "../components/Divider";
 import Share from "../components/Share";
 import Content, { HTMLContent } from "../components/Content";
 
+const tagStyle = {
+  display: "inline-block",
+  padding: "6pt 10pt",
+  marginRight: "0.5rem",
+  lineHeight: 1.7,
+  border: "1px solid #6c63ff",
+  color: "#6c63ff",
+  fontWeight: 200,
+  fontSize: "small",
+  whiteSpace: "nowrap",
+  cursor: "pointer",
+  backgroundColor: "transparent",
+  borderRadius: "30px",
+  marginBottom: "1.3em",
+  transition: ".7s",
+  textAlign: "center",
+  textDecoration: "none"
+};
+
 export const BlogPostTemplate = ({
   content,
   url,
@@ -23,42 +42,52 @@ export const BlogPostTemplate = ({
     <>
       {helmet || ""}
       <div className="container">
-        <section className="section" style={{ marginTop: 52 }}>
+        <section className="section" style={{ marginTop: 30 }}>
           <div className="columns">
             <div className="column is-10 is-offset-1">
               <div className="blog content">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-end"
+                  }}
+                >
+                  <p style={{ marginBottom: 0, marginRight: "1rem" }}>{date}</p>
+                  {/* tag */}
+                  {tags && tags.length ? (
+                    <ul className="taglist" style={{ marginTop: "1rem" }}>
+                      {tags.map(tag => (
+                        <Link key={tag} to={`/tags/${kebabCase(tag)}/`}>
+                          <li style={tagStyle}>{tag}</li>
+                        </Link>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
                 <h1
                   className="title is-size-4"
                   style={{
                     paddingBottom: "1rem",
-                    borderBottom: "2px solid #6c63ff"
+                    borderBottom: "1px solid",
+                    borderImage:
+                      "linear-gradient(to right, #6c63ff 0%, #4641ff 100%)",
+                    borderImageSlice: 1
                   }}
                 >
                   {title}
                 </h1>
-                <p>{date}</p>
+
                 <p>{description}</p>
+                <Divider getterBottom />
                 <PostContent content={content} />
                 <p style={{ textAlign: "center", margin: `4rem` }}>...</p>
                 {/* share */}
                 <div style={{ marginTop: `2rem` }}>
-                  <h4 className="is-size-5 has-text-weight-light">シェア</h4>
+                  <h4 className="is-size-5 has-text-weight-light">Share</h4>
                   <Share url={encodeURI(url)} />
                 </div>
                 <Divider getterBottom />
-                {/* tag */}
-                {tags && tags.length ? (
-                  <div style={{ marginTop: `2rem` }}>
-                    <h4 className="is-size-5 has-text-weight-light">タグ</h4>
-                    <ul className="taglist">
-                      {tags.map(tag => (
-                        <li key={tag + `tag`}>
-                          <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
               </div>
             </div>
           </div>

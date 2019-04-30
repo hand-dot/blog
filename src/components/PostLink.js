@@ -2,40 +2,30 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import PreviewCompatibleImage from "./PreviewCompatibleImage";
-import Divider from "./Divider";
 
-const PostLink = ({
-  thumbnail,
-  title,
-  date,
-  link,
-  divider = true
-}) => (
+const PostLink = ({ thumbnail, title, date, link }) => (
   <>
     <Link to={link}>
-      <article className="">
-        <figure className=" ">
-          <PreviewCompatibleImage
-            imageInfo={{
-              image: thumbnail,
-              alt: `${title}のサムネイル`
-            }}
-          />
-        </figure>
-        <div className="">
+      <article style={{ color: "#4a4a4a" }}>
+        {date && <small>{date}</small>}
+        <PreviewCompatibleImage
+          imageInfo={{
+            image: thumbnail,
+            alt: `${title}のサムネイル`
+          }}
+        />
+        <div>
           <div>
-            <p>{title}</p>
-            {date && (
-              <>
-                <span> &bull; </span>
-                <small>{date}</small>
-              </>
-            )}
+            <p
+              style={{ minHeight: 100 }}
+              className="is-size-6 has-text-weight-light"
+            >
+              {title}
+            </p>
           </div>
         </div>
       </article>
     </Link>
-    {divider && <Divider getterBottom />}
   </>
 );
 
@@ -43,7 +33,7 @@ PostLink.propTypes = {
   thumbnail: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   title: PropTypes.string,
   date: PropTypes.string,
-  link: PropTypes.string,
+  link: PropTypes.string
 };
 
 export default PostLink;

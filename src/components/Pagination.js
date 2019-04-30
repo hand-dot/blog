@@ -14,7 +14,7 @@ const Pagination = ({
     style={{
       display: "flex",
       flexWrap: "wrap",
-      justifyContent: "center",
+      justifyContent: "space-between",
       alignItems: "center",
       listStyle: "none",
       padding: 0,
@@ -23,35 +23,23 @@ const Pagination = ({
     }}
   >
     {!isFirst && (
-      <div className="control">
-        <Link className="button" to={`/${prevPage}`} rel="prev">
-          ⬅
-        </Link>
-      </div>
+      <Link style={{ color: "#4a4a4a" }} to={`/${prevPage}`} rel="prev">
+        {`«`}
+      </Link>
     )}
     {Array.from({ length: numPages }, (_, i) => (
-      <div className="control" key={i}>
-        <li
-          key={`pagination-number${i + 1}`}
-          style={{
-            margin: 0
-          }}
-        >
-          <Link
-            to={`/${i === 0 ? "" : i + 1}`}
-            className={`button ${i + 1 === currentPage ? "is-link" : ""}`}
-          >
-            {i + 1}
-          </Link>
-        </li>
-      </div>
+      <Link
+        key={i}
+        to={`/${i === 0 ? "" : i + 1}`}
+        style={{ color: ` ${i + 1 === currentPage ? "#a1a1a1" : "#4a4a4a"}` }}
+      >
+        {i + 1}
+      </Link>
     ))}
     {!isLast && (
-      <div className="control">
-        <Link className="button" to={`/${nextPage}`} rel="next">
-          ➡︎
-        </Link>
-      </div>
+      <Link style={{ color: "#4a4a4a" }} to={`/${nextPage}`} rel="next">
+        {`»`}
+      </Link>
     )}
   </ul>
 );

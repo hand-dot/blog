@@ -18,7 +18,7 @@ class BlogIndex extends React.Component {
     return (
       <Page
         title="Article"
-        description="日々のLog"
+        description="学習記録と技術解説などを記事にしています。"
       >
         <>
           <PostList posts={posts} />
