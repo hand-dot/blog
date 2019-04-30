@@ -102,7 +102,7 @@ class ContactPage extends React.Component {
             </div>
           </div>
           <div className="field">
-            <button className="button is-link" type="submit">
+            <button className="button" type="submit">
               送信
             </button>
           </div>
