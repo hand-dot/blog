@@ -14,7 +14,7 @@ const Pagination = ({
     style={{
       display: "flex",
       flexWrap: "wrap",
-      justifyContent: "space-between",
+      justifyContent: "space-around",
       alignItems: "center",
       listStyle: "none",
       padding: 0,
