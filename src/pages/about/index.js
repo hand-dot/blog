@@ -12,4 +12,4 @@ const ApiPage = () => (
   </Page>
 );
 
-export default withLayout(ApiPage, "帳票APIサービス");
+export default withLayout(ApiPage, "紹介");
