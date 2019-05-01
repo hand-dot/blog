@@ -65,7 +65,10 @@ const NavItemForOutSide = ({ icon = null, label = "", link = "", isPC }) => (
         <img src={icon} alt={label} style={{ width: 24 }} />
       </span>
     )}
-    <span style={{ paddingLeft: 5, color: isPC ? "#fff" : "#999" }}>
+    <span
+      style={{ paddingLeft: 5, color: isPC ? "#fff" : "#999" }}
+      className="has-text-weight-light"
+    >
       {label}
     </span>
   </a>
