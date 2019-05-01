@@ -1,6 +1,6 @@
 import "whatwg-fetch";
 import React from "react";
-import { navigateTo } from "gatsby-link";
+import { navigate } from "gatsby-link";
 import withLayout from "../../components/withLayout";
 import Page from "../../components/Page";
 
@@ -31,7 +31,7 @@ class ContactPage extends React.Component {
         ...this.state
       })
     })
-      .then(() => navigateTo(form.getAttribute("action")))
+      .then(() => navigate(form.getAttribute("action")))
       .catch(error => alert(error));
   };
 

@@ -19,7 +19,7 @@ export default (Component, title) => {
     render() {
       const { isPC } = this.state;
       return (
-        <div style={{ backgroundColor: "#d6ddff0d" }}>
+        <div style={{ backgroundColor: "#d6ddff0d", paddingTop: 52 }}>
           <SEO />
           {title && <Helmet title={`${title} - ${DOMAIN}`} />}
           <Navbar isPC={isPC} />
