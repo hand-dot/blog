@@ -6,8 +6,7 @@ import PreviewCompatibleImage from "./PreviewCompatibleImage";
 const PostLink = ({ thumbnail, title, date, link }) => (
   <>
     <Link to={link}>
-      <article style={{ color: "#4a4a4a" }}>
-        {date && <small>{date}</small>}
+      <article className="post">
         <PreviewCompatibleImage
           imageInfo={{
             image: thumbnail,
@@ -16,12 +15,8 @@ const PostLink = ({ thumbnail, title, date, link }) => (
         />
         <div>
           <div>
-            <p
-              style={{ minHeight: 100 }}
-              className="is-size-6 has-text-weight-light"
-            >
-              {title}
-            </p>
+            {date && <small>{date}</small>}
+            <p style={{ minHeight: 100 }}>{title}</p>
           </div>
         </div>
       </article>

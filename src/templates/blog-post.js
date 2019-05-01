@@ -79,7 +79,6 @@ export const BlogPostTemplate = ({
                 </h1>
 
                 <p>{description}</p>
-                <Divider getterBottom />
                 <PostContent content={content} />
                 <p style={{ textAlign: "center", margin: `4rem` }}>...</p>
                 {/* share */}
