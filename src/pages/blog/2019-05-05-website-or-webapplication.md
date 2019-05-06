@@ -8,9 +8,9 @@ tags:
   - Web
   - UI
 ---
-![WebサイトとWebアプリの違いについて](/img/undraw_creative_team_r90h.png "WebサイトとWebアプリの違いについて")
-
 # WebサイトとWebアプリは目的が違う
+
+下記で実際にどのように違うのかを整理しています。
 
 ## Webサイト
 
