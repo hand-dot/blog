@@ -81,7 +81,7 @@ const NavItems = ({ isPC }) => (
       <NavItem label="Contact" link="/contact" isPC={isPC} />
       <NavItemForOutSide
         label="Twitter"
-        link="https://twitter.com/kyouhei_fukuda"
+        link="https://twitter.com/hand_dot"
         isPC={isPC}
       />
       <NavItemForOutSide
