@@ -1,9 +1,12 @@
 ---
 templateKey: blog-post
-title: dom-event
+title: DOMイベント
 date: 2019-05-09T10:23:05.388Z
 description: mdnのイベントリファレンスが結構参考になるのでその記事をみて思ったことをまとめてみました。
 thumbnail: /img/undraw_click_here_2li1.png
+tags:
+  - DOM
+  - HTML
 ---
 イベントの一覧が参考になり、
 
