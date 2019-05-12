@@ -8,3 +8,6 @@ tags:
   - UI
 ---
 ![要素を操作するユーザー](/img/undraw_usability_testing_2xs4.png "要素を操作するユーザー")
+
+これをUIに当てはめて考えてみる
+https://overreacted.io/ja/the-bug-o-notation/
