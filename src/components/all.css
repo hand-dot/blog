@@ -148,3 +148,17 @@
 .gatsby-code-title {
   font-size: small
 }
+
+a.navbar-item.nav-item{
+  color: #999;
+  border-bottom: 1px solid #eee;
+}
+@media screen and (min-width:500px) { 
+  a.navbar-item.nav-item{
+    color:#fff;
+    border-bottom: none;
+  }
+  a.navbar-item.nav-item :hover{
+    color: #999;
+  }
+ }

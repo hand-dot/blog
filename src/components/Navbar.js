@@ -4,7 +4,6 @@ import Logo from "./Logo";
 import { StaticQuery, graphql, Link } from "gatsby";
 import notification from "../img/notification-icon.svg";
 
-const getBorder = isPC => ({ borderBottom: isPC ? "none" : "1px solid #eee" });
 let headwayAccount = "";
 const Notification = () => {
   if (
@@ -35,60 +34,45 @@ const Notification = () => {
   );
 };
 
-const NavItem = ({ icon = null, label = "", link = "", isPC }) => (
-  <Link className="navbar-item" style={getBorder(isPC)} to={link}>
-    {icon && (
-      <span className="icon">
-        <img src={icon} alt={label} style={{ width: 18 }} />
+const Item = ({ icon, label }) => {
+  return (
+    <>
+      {icon && (
+        <span className="icon">
+          <img src={icon} alt={label} style={{ width: 18 }} />
+        </span>
+      )}
+      <span style={{ paddingLeft: 5 }} className="has-text-weight-light">
+        {label}
       </span>
-    )}
-    <span
-      style={{ paddingLeft: 5 }}
-      className="has-text-weight-light"
-      style={{ color: isPC ? "#fff" : "#999" }}
-    >
-      {label}
-    </span>
+    </>
+  );
+};
+
+const NavItem = ({ icon = null, label = "", link = "" }) => (
+  <Link className="navbar-item nav-item" to={link}>
+    <Item icon={icon} label={label} />
   </Link>
 );
 
-const NavItemForOutSide = ({ icon = null, label = "", link = "", isPC }) => (
+const NavItemForOutSide = ({ icon = null, label = "", link = "" }) => (
   <a
-    style={getBorder(isPC)}
-    className="navbar-item"
+    className="navbar-item nav-item"
     href={link}
     target="_blank"
     rel="noopener noreferrer"
   >
-    {icon && (
-      <span className="icon">
-        <img src={icon} alt={label} style={{ width: 24 }} />
-      </span>
-    )}
-    <span
-      style={{ paddingLeft: 5, color: isPC ? "#fff" : "#999" }}
-      className="has-text-weight-light"
-    >
-      {label}
-    </span>
+    <Item icon={icon} label={label} />
   </a>
 );
 
 const NavItems = ({ isPC }) => (
   <>
     <div className="navbar-end">
-      <NavItem label="About" link="/about" isPC={isPC} />
-      <NavItem label="Contact" link="/contact" isPC={isPC} />
-      <NavItemForOutSide
-        label="Twitter"
-        link="https://twitter.com/hand_dot"
-        isPC={isPC}
-      />
-      <NavItemForOutSide
-        label="Github"
-        link="https://github.com/hand-dot/"
-        isPC={isPC}
-      />
+      <NavItem label="About" link="/about" />
+      <NavItem label="Contact" link="/contact" />
+      <NavItemForOutSide label="Twitter" link="https://twitter.com/hand_dot" />
+      <NavItemForOutSide label="Github" link="https://github.com/hand-dot/" />
     </div>
     {isPC && <Notification />}
   </>
@@ -111,6 +95,7 @@ class Navbar extends Component {
   }
   render() {
     const { active } = this.state;
+    const { isPC } = this.props;
     return (
       <StaticQuery
         query={graphql`
@@ -132,7 +117,6 @@ class Navbar extends Component {
           }
         }) => {
           if (headwayAccount === "") headwayAccount = headway;
-          const isPC = this.props.isPC;
           return (
             <>
               <Helmet>
@@ -147,7 +131,6 @@ class Navbar extends Component {
               <nav
                 style={{ background: "linear-gradient(90deg,#6c63ff,#4641ff)" }}
                 className="navbar is-fixed-top"
-                suppressHydrationWarning={true}
               >
                 <div className="container">
                   <div className="navbar-brand">
