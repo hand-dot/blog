@@ -3,7 +3,7 @@
  */
  code[class*='language-'],
  pre[class*='language-'] {
-   color: white;
+   color: hsl(207, 4%, 16%);
    background: none;
    font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
    font-feature-settings: normal;
