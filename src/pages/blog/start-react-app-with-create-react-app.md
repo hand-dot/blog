@@ -180,6 +180,8 @@ $ npm run build
 
 (`create-react-app`のデフォルトの設定ではInternet Explorer 9, 10, 11には`polyfill`というものが必要ですが、IEのサポートは業務では大切ですが、このコースでは目的にしていないため一旦スキップします。)
 
+(`create-react-app`では`ES6`に加えて[ここ](https://facebook.github.io/create-react-app/docs/supported-browsers-features#supported-language-features)に記載されている機能もサポートしています。)
+
 - - -
 ### CSSパーサーのPostCSSはなにをしてくれているのか
 ![postcss](/img/postcss.jpg "postcss")
