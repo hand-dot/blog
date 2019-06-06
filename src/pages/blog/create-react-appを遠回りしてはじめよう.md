@@ -4,7 +4,7 @@ title: Create React Appを遠回りしてはじめよう
 date: 2019-06-06T00:14:38.367Z
 description: >-
   Reactのボイラープレートとして利用されるCreate React
-  Appを使えばすぐにReactを使うことができます。しかし、少し遠回りをして中で何が行われているか見てみましょう！
+  Appを使えばすぐにReactのコードを書いていくことができます。しかし、少し遠回りをして中で何が行われているか見てみましょう！
 thumbnail: /img/undraw_road_sign_mfpo.png
 tags:
   - React
