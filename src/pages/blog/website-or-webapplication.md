@@ -77,7 +77,7 @@ WebサイトとWebアプリの目的の違いを明確にすることで、残�
 
 それは会員登録のUIやTodoListアプリのUIなどのさまざまなWebアプリの共通的なことについてです。
 
-具体的にはHTMLの要素を大きなカテゴリーで分けた時に約10種類程度に分類することができますが、そのうちの`Form系要素`のことを別の記事で取り上げ、少し深く探求していきたいと思います。
+具体的には[HTMLの要素を大きなカテゴリーで分けた時に約10種類程度に分類することができます](https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Content_categories#Form-associated_content)が、そのうちの[`フォーム関連コンテンツ`](https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Content_categories#Form-associated_content)や[`対話的コンテンツ`](https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Content_categories#Interactive_content)のことを別の記事で取り上げ、少し深く探求していきたいと思います。
 
 
 それではまた次回。
