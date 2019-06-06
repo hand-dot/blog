@@ -111,7 +111,7 @@ $ npm run build
 
 またまた先ほどの話に戻りますが、このプロジェクトは`webpack`が`src/index.js`をスタート地点にしてそれらの依存関係をまとめて`static/js/....chunk.js`を作成すると言いましたが、実際には依存関係はこのようにインポートとエクスポートで書いていきます。
 
-`webpack`のことをモジュールバンドラーと説明しましたがイメージがつきましたでしょうか？様々なファイルをまとめてくれるのでモジュールバンドラーです。また、他のファイルを見てもらえればわかりますが、`js`ファイルだけでなく、`css`や`svg`などもインポートして使うことができます。
+`webpack`のことをモジュールバンドラーと説明しましたがイメージがつきましたでしょうか？様々なファイルをまとめてくれるのでモジュールバンドラーです。また、他のファイルを見てもらえればわかりますが、`JS`ファイルだけでなく、`CSS`,`SVG`ファイルなどもインポートして使うことができます。
 
 また、開発用のwebサーバーにも`webpack`の`webpack-dev-server`というものを使っています。
 
@@ -189,11 +189,53 @@ $ npm run build
 
 CSSパーサーという言葉もしっくりこなくてもこれから見ていくので大丈夫です。
 
-内部的に[PostCSS](https://postcss.org/)というものを使っていますが、`Babel`とはJavaScriptのコードを新しい書き方から古い書き方へと変換するために使われているツールです。
+内部的に[PostCSS](https://postcss.org/)というものを使っていますが、`PostCSS`はCSSのパーサーで`PostCSSプラグイン`と組み合わせてCSSに変更を加えるツールです。
 
-次にautoprefixerが何をしてくれているのか確認する生成されたcssファイルにベンダープレフィックスが自動的に付与されていることを確認する
+`create-react-app`では`PostCSSプラグイン`の[`Autoprefixer`](https://github.com/postcss/autoprefixer)というものを利用しています。
+`Autoprefixer`は必要なCSSベンダープレフィックス(-webkit-や-ms-)を付与してくれます。
+
+これが何をしてくれているのか実際にみていきましょう。
+
+`src/App.css`の中に下記の`App-logo`というクラスがあります。
+
+```css
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+```
+
+プロパティとしてCSS3の`animation`が使用されています。
+
+先ほど`babel`の説明でビルドしたままで結構ですので、
+`/build/static/css/...chunk.css`を確認してみましょう。
+これも`webpack`によって最適化されているのでフォーマットしてから確認しましょう。
+
+先ほど確認した`App-logo`というクラスが下記のように下記変わっていることが確認できます。
+
+```
+.App-logo {
+  -webkit-animation: App-logo-spin 20s linear infinite;
+  animation: App-logo-spin 20s linear infinite;
+  height: 40vmin;
+  pointer-events: none;
+}
+```
+
+ベンダープレフィックスが付与されていることが確認できます。
+
+こうすることで開発時に`CSS`プロパティに応じて必要なベンダープレフィックスなどを意識せず効率的に開発を行うことができます。
+
+この変更が加えられるタイミングも`babel`と同様です。webpackがバンドルするときに`CSS`ファイルもロードしますがそのときにベンダープレフィックスを付与しています。
 
 
 ---
 
 ### まとめ
+
+簡単にではありましたが、`create-react-app`で何をしてくれているのかを確認しました。
+
+今回はスキップしましたが、上記で紹介したもの以外にも`Progressive Web App`を作るためのアセットや、`単体テスト`を行うためのツール、コードの静的解析ツールも入っています。
+
+
