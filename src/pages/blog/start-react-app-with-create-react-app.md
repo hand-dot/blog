@@ -7,13 +7,16 @@ description: >-
   Appを使えばすぐにReactのコードを書いていくことができます。しかし、少し遠回りをして中で何が行われているか見てみましょう！
 thumbnail: /img/undraw_road_sign_mfpo.png
 ---
+![Create React Appを少し遠回りしてはじめよう](/img/undraw_road_sign_mfpo.png "Create React Appを少し遠回りしてはじめよう")
+
+
+
 ## Create React App で始めるReactを理解する
 
 この講義から実際にReactに触れていきます！
 
 前の講義で、[`vscode`](https://code.visualstudio.com/)と[`node.js`](https://nodejs.org/ja/)のインストールがすでに完了していると思いますが、
 この講義ではReactを始めるときに使用する[`create-react-app`](https://facebook.github.io/create-react-app/)というコマンドラインツールを少し掘り下げていきたいと思います。
-
 
 このコマンドラインツールはfecebookが開発したもので、
 ワンコマンドでReactを使うことができる環境をセットアップできます。
@@ -29,12 +32,11 @@ thumbnail: /img/undraw_road_sign_mfpo.png
 遠回りにはなりますが、
 `create-react-app`で作ったReactのWebアプリの動作の仕組みがわかることで、何をしているのかわからない部分を減らし、自信を持って開発ができるようになると考えています。
 
----
+- - -
 
 ## Create React App ではじめたアプリの動作の仕組み
 
 私たちは`create-react-app`を使ってセットアップしたプロジェクトで[`webpack`](https://webpack.js.org/)や[`babel`](https://babeljs.io/),[`PostCSS`](https://postcss.org/)などを意識せず利用していますがそれらを一つづつみていきます。
-
 
 それではさっそくコマンドを打ってはじめのReactのWebアプリを作成してみましょう！
 
@@ -43,8 +45,9 @@ $ npx create-react-app my-app
 $ cd my-app
 ```
 
-
 ### モジュールハンドラーのwebpackはなにをしてくれているのか
+
+![webpack](/img/webpack.jpg "webpack")
 
 バンドラーという言葉がしっくりこなくても一緒になにをやっているのか見ていくので大丈夫です。内部的に[`webpack`](https://webpack.js.org/)というものを使っていますが、動作をみていきましょう。
 
@@ -97,7 +100,6 @@ $ npm run build
 
 なので、ウェブサーバーに`build`フォルダを配置した時に空の`div`タグではなく、なにかしらの`jsファイル`が読み込まれReactのコンポーネントが表示されるのです。
 
-
 次に、読み込んでいる`static/js/....chunk.js`のファイルを見に行ってみましょう。
 
 とんでもない量のJavaScriptが見れると思います。
@@ -129,19 +131,22 @@ $ npm run start
 
 再度確認ですが、`webpack`は`src/index.js`から始まった依存関係をまとめてくれ、その参照を`public/index.html`に挿入してくれるということがわかりました。また、開発時にはその処理をソースコードに変更があるたびに継続して行なってくれるため、書き換えた内容が即座反映されるということがわかりました。
 
-
----
+- - -
 
 ### トランスパイラーのBabelはなにをしてくれているのか
+
+![babel](/img/babel.png "babel")
 
 次にトランスパイラーのBabelが何をしてくれているかみていきましょう
 。(https://facebook.github.io/create-react-app/docs/supported-browsers-features)
 
 生成されたjavascriptファイルはES6で書いても最近のブラウザで動くようになっていることを生成物をみて確認する
 
----
+- - -
 
 ### CSSパーサーのPostCSSはなにをしてくれているのか
+
+![postcss](/img/postcss.jpg "postcss")
 
 次にautoprefixerが何をしてくれているのか確認する
 生成されたcssファイルにベンダープレフィックスが自動的に付与されていることを確認する
