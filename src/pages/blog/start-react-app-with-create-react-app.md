@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: start-react-app-with-create-react-app
+title: Create React Appを遠回りしてはじめよう
 date: 2019-06-06T01:38:22.997Z
 description: >-
   Reactのボイラープレートとして利用されるCreate React
