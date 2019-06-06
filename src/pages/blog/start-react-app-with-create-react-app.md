@@ -185,4 +185,15 @@ $ npm run build
 - - -
 ### CSSパーサーのPostCSSはなにをしてくれているのか
 ![postcss](/img/postcss.jpg "postcss")
+
+
+CSSパーサーという言葉もしっくりこなくてもこれから見ていくので大丈夫です。
+
+内部的に[postcss](https://babeljs.io/)というものを使っていますが、`Babel`とはJavaScriptのコードを新しい書き方から古い書き方へと変換するために使われているツールです。
+
 次にautoprefixerが何をしてくれているのか確認する生成されたcssファイルにベンダープレフィックスが自動的に付与されていることを確認する
+
+
+---
+
+### まとめ
