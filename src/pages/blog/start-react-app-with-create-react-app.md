@@ -77,16 +77,16 @@ my-app
     └── serviceWorker.js
 ```
 
-`/public`フォルダーからみていきましょう。
+**`public`フォルダーからみていきましょう。**
 
-`favicon.ico`はスキップします。
+`public/favicon.ico`はスキップします。
 
-`manifest.json`はホーム画面へ追加する際に、より細かな指定をするための記述です。
+`public/manifest.json`はホーム画面へ追加する際に、より細かな指定をするための記述です。
 [PWA](https://developers.google.com/web/progressive-web-apps/)を作成する際にこちらのファイルを記述していくことになると思いますが、今回はReactのWebアプリにフォーカスしたいのでスキップします。
 
-次に`index.html`を開いてみましょう。
-いろいろとコメントがありますが、このファイルの`body`タグにはid`が`root`の`div`タグしかないことがわかると思います。
-次にまだなにもしていませんが、このアプリをビルドしてみましょう。
+**次に`public/index.html`を開いてみましょう。  
+いろいろとコメントがありますが、このファイルの`body`タグには`id`が`root`の`div`タグしかないことがわかると思います。
+次にまだなにもしていませんが、このアプリをビルドしてみましょう。**
 
 ```
 $ npm run build
@@ -96,11 +96,11 @@ $ npm run build
 
 `build`というフォルダが新たに追加されていると思います。
 
-`create-react-app`で生成したプロジェクトでビルドを実行すると`build`というフォルダに成果物が出力されることがわかります。
+**`create-react-app`で生成したプロジェクトでビルドを実行すると`build`というフォルダに成果物が出力されることがわかります。**
 
-フォルダを開いてみると、先ほど`public`フォルダにあった`index.html`や`favicon.ico`,`manifest.json`があることがわかります。これは`create-react-app`の内部の実装を見ればわかるのですが、`build`時に`public`フォルダーの内容を`build`フォルダにコピーしています。
+`build`フォルダを開いてみると、先ほど`public`フォルダにあった`index.html`や`favicon.ico`,`manifest.json`があることがわかります。これは`create-react-app`の内部の実装を見ればわかるのですが、`build`時に`public`フォルダーの内容を`build`フォルダにコピーしています。
 
-次に`index.html`のファイルの内容をみていきましょう。
+次に`build/index.html`のファイルの内容をみていきましょう。
 
 ビルド時に最適化され無駄な文字が削除されているので、少しみにくいのですがフォーマットして確認すると、先ほど`public`フォルダで確認した`index.html`と違いをいくつか見つけられると思います。
 
