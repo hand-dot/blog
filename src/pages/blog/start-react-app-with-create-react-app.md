@@ -214,7 +214,7 @@ CSSパーサーという言葉もしっくりこなくてもこれから見て�
 
 先ほど確認した`App-logo`というクラスが下記のように下記変わっていることが確認できます。
 
-```
+```css
 .App-logo {
   -webkit-animation: App-logo-spin 20s linear infinite;
   animation: App-logo-spin 20s linear infinite;
