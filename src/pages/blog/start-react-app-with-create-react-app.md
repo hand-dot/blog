@@ -9,14 +9,14 @@ thumbnail: /img/undraw_road_sign_mfpo.png
 ---
 ![Create React Appを少し遠回りしてはじめよう](/img/undraw_road_sign_mfpo.png "Create React Appを少し遠回りしてはじめよう")
 
-
 ## Create React App で始めるReactを理解する
+
 この講義から実際にReactに触れていきます！
 前の講義で、[`vscode`](https://code.visualstudio.com/)と[`node.js`](https://nodejs.org/ja/)のインストールがすでに完了していると思いますが、この講義ではReactを始めるときに使用する[`create-react-app`](https://facebook.github.io/create-react-app/)というコマンドラインツールを少し掘り下げていきたいと思います。
 
 このコマンドラインツールはfecebookが開発したもので、ワンコマンドでReactを使うことができる環境をセットアップできます。
 
-このツールができるまではReactを使う場合はモジュールバンドラーやトランスパイラ(後ほど説明するので今はなんのことを言っているかわからなくても問題ありません)の設定が必要でしたが、このツールを使うことでそれらの設定をすっ飛ばしてすぐにReactのコンポーネントを書いていくことができます。
+このツールができるまではReactを使おうとするとモジュールバンドラーやトランスパイラ(後ほど説明するので今はなんのことを言っているかわからなくても問題ありません)の設定が必要でしたが、このツールを使うことでそれらの設定をすっ飛ばしてすぐにReactのコンポーネントを書いていくことができます。
 
 さらにこのツールを利用して開発を効率的に行えますし、ビルド時に最適化も行ってくれます。
 
@@ -25,12 +25,32 @@ thumbnail: /img/undraw_road_sign_mfpo.png
 遠回りにはなりますが、`create-react-app`で作ったReactのWebアプリの動作の仕組みがわかることで、何をしているのかわからない部分を減らし、自信を持って開発ができるようになると考えています。
 
 - - -
+
 ## Create React App ではじめたアプリの動作の仕組み
+
 私たちは`create-react-app`を使ってセットアップしたプロジェクトで[`webpack`](https://webpack.js.org/)や[`babel`](https://babeljs.io/),[`PostCSS`](https://postcss.org/)などを意識せず利用していますがそれらを一つづつみていきます。
 
-それではさっそくコマンドを打ってはじめのReactのWebアプリを作成してみましょう！
-```$ npx create-react-app my-app$ cd my-app```
+それではさっそくコマンドを打ってはじめのReactのWebアプリを作成してみましょう！(react-scriptsは3.0.1のバージョンを使っています。)
+
+```
+$ npx create-react-app my-app
+```
+
+また、下記のコマンドを打つことで雛形のアプリを起動して確認することもできます！
+
+```
+$ cd my-app
+$ npm run start
+```
+
+
+
+![create-react-app の雛形](/img/スクリーンショット-2019-06-08-23.00.04.png "create-react-app の雛形")
+
+---
+
 ### モジュールハンドラーのwebpackはなにをしてくれているのか
+
 ![webpack](/img/webpack.jpg "webpack")
 バンドラーという言葉がしっくりこなくてもなにをやっているのか見ていくので大丈夫です。
 
@@ -130,17 +150,18 @@ $ npm run start
 
 また、開発時にはその処理をソースコードに変更があるたびに継続して行なってくれるため、書き換えた内容が即座反映されるということがわかりました。
 
-
 このようにファイルを分割することができるのでコンポーネントごとにファイルを分け、モジュールとして利用できます。
 
 そして変更するたびに更新されるため開発効率もあがります。
+
 - - -
+
 ### トランスパイラーのBabelはなにをしてくれているのか
+
 ![babel](/img/babel.png "babel")
 トランスパイラーという言葉もしっくりこなくてもこれから見ていくので大丈夫です。
 
 内部的に[Babel](https://babeljs.io/)というものを使っていますが、`Babel`とはJavaScriptのコードを新しい書き方から古い書き方へと変換するために使われているツールです。
-
 
 **なぜトランスパイルするのか**
 トランスパイルとはソース・トゥ・ソースコンパイラなどとも言われますが、このケースではJavaScriptをJavaScriptに変換します。
@@ -166,7 +187,7 @@ log('Hello Word!')
 $ npm run build
 ```
 
-さきほど動作を確認しましたが、`webpack`がバンドルしてくれるので`/build`を`const `(constの後に半角スペースを入れないと`constructor`がヒットするので注意)や`=>`で検索すればOKです。
+さきほど動作を確認しましたが、`webpack`がバンドルしてくれるので`/build`を`const`(constの後に半角スペースを入れないと`constructor`がヒットするので注意)や`=>`で検索すればOKです。
 
 検索にヒットしたのは`...chunk.js.map`ではないでしょうか？
 
@@ -183,9 +204,10 @@ $ npm run build
 (`create-react-app`では`ES6`に加えて[ここ](https://facebook.github.io/create-react-app/docs/supported-browsers-features#supported-language-features)に記載されている機能もサポートしています。)
 
 - - -
-### CSSパーサーのPostCSSはなにをしてくれているのか
-![postcss](/img/postcss.jpg "postcss")
 
+### CSSパーサーのPostCSSはなにをしてくれているのか
+
+![postcss](/img/postcss.jpg "postcss")
 
 CSSパーサーという言葉もしっくりこなくてもこれから見ていくので大丈夫です。
 
@@ -229,8 +251,7 @@ CSSパーサーという言葉もしっくりこなくてもこれから見て�
 
 この変更が加えられるタイミングも`babel`と同様です。webpackがバンドルするときに`CSS`ファイルもロードしますがそのときにベンダープレフィックスを付与しています。
 
-
----
+- - -
 
 ### まとめ
 
@@ -243,7 +264,3 @@ CSSパーサーという言葉もしっくりこなくてもこれから見て�
 あ、今回はスキップしましたが、上記で紹介したもの以外にも`Progressive Web App`を作るためのアセットや、`単体テスト`を行うためのツール、`コードの静的解析ツール`も入っています。
 
 ごめんなさいこれで本当に最後です(笑)　それではまた次回。
-
-
-
-
