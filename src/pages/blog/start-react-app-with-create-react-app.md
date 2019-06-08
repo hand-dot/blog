@@ -112,6 +112,11 @@ $ npm run build
 次に、読み込んでいる`static/js/`のファイルを見に行ってみましょう。
 (`runtime~main.[hash].js`のファイルはwebpackランタイムロジックの小さな塊ですのでスキップしてOKです。)
 
+- `[number].[hash].chunk.js`
+  - このコードは`src/`でインポートした`node_modules`のライブラリのコードが含まれています。(現時点ではReactのコードが含まれています。)
+- `main.[hash].chunk.js`
+  - このファイルは`App.js`
+
 とんでもない量のJavaScriptが見れると思います。
 
 これは`webpack`というモジュールバンドラーが`src/index.js`をスタート地点として依存関係の解析を行い、必要なものを最適化しまとめてくれています。
