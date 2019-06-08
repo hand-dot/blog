@@ -113,9 +113,9 @@ $ npm run build
 (`runtime~main.[hash].js`のファイルはwebpackランタイムロジックの小さな塊ですのでスキップしてOKです。)
 
 - `[number].[hash].chunk.js`
-  - このコードは`src/`でインポートした`node_modules`のライブラリのコードが含まれています。(現時点ではReactのコードが含まれています。)
+  - このコードは`src`ディレクトリ配下でインポートした`node_modules`のアプリケーション外のライブラリのコードが含まれています。(現時点ではReactのコードが含まれています。)
 - `main.[hash].chunk.js`
-  - このファイルは`App.js`
+  - このファイルは`App.js`などの`src`ディレクトリ配下のアプリケーションのコードが含まれます。
 
 とんでもない量のJavaScriptが見れると思います。
 
