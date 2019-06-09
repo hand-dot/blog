@@ -190,7 +190,7 @@ log('Hello Word!')
 $ npm run build
 ```
 
-さきほど動作を確認しましたが、`webpack`がバンドルしてくれるので`/build`を`const`(constの後に半角スペースを入れないと`constructor`がヒットするので注意)や`=>`で検索すればOKです。
+さきほど動作を確認しましたが、webpackがバンドルしてくれるので`/build`を`const`や`=>`で検索すればOKです。(constの後に半角スペースを入れないと`constructor`がヒットするので注意)
 
 検索にヒットしたのは`...chunk.js.map`ではないでしょうか？
 
