@@ -42,8 +42,11 @@ $ npx create-react-app my-app
 $ cd my-app
 $ npm run start
 ```
+(`Ctrl + C`で停止できます。
+)
 
 ![create-react-app の雛形](/img/スクリーンショット-2019-06-08-23.00.04.png "create-react-app の雛形")
+
 
 **さっそくコンポーネントをガシガシ書いていきたい気持ちを抑えて遠回りしていきましょう。**
 
