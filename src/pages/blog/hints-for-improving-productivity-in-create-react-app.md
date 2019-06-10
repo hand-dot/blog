@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: hints-for improving-productivity-in-create-react-app
+title: React開発で生産性を向上させるヒント
 date: 2019-06-10T04:38:47.529Z
 description: Create React Appで作ったアプリなど、Reactアプリで開発するにあたって生産性を向上させるヒントをまとめました。
 thumbnail: /img/undraw_web_developer_p3e5.png
