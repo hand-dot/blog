@@ -32,7 +32,7 @@ vscode上で、[eslint のプラグイン](https://marketplace.visualstudio.com/
 
 ### eslint
 
-![](./img/eslint.png)
+![](/img/eslint.png)
 
 下記の画像では[eslint のプラグイン](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint#overview)のプラグインをインストールすることで、
 
@@ -48,7 +48,7 @@ vscode上で、[eslint のプラグイン](https://marketplace.visualstudio.com/
 
 に書き換え、`'lego' is not defined.eslint(no-undef)`というエラーになっています。
 
-![](./img/eslint.gif)
+![](/img/eslint.gif)
 
 このようにeslintを導入することで静的解析によってバグを早期に発見することができます。
 
@@ -56,11 +56,11 @@ vscode上で、[eslint のプラグイン](https://marketplace.visualstudio.com/
 
 #### pretter
 
-![](./img/pretter.png)
+![](/img/pretter.png)
 
 下記の画像では[pretterのプラグイン](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)のプラグインをインストールし`vscode`の保存時にフォーマットするという設定を行うことで、保存時に自動的にフォーマットがかかっています。
 
-![](./img/pretter.gif)
+![](/img/pretter.gif)
 
 このようにpretterを導入することでコードのスタイルの一貫性を保つことができます。
 
@@ -74,7 +74,7 @@ vscode上で、[eslint のプラグイン](https://marketplace.visualstudio.com/
 Google Chrome 拡張機能から「React Developer Tools」を検索してインストールするとReactの開発環境でGoogle Chromeの開発者ツールから、
 Reactのタブが選択できるようになります。
 
-![](./img/react-developer-tools.jpg)
+![](/img/react-developer-tools.jpg)
 
 具体的にどのようなことができるかを紹介します。
 
@@ -82,7 +82,7 @@ Reactのタブが選択できるようになります。
 
 ### props, stateを確認したり書き換える
 
-![](./img/react-developer-tools1.gif)
+![](/img/react-developer-tools1.gif)
 
 上記にあるようにReactコンポーネントを選択して、コンポーネントの値を確認したり、書き換えることができます。(例ではpropsを書き換えています。)
 
