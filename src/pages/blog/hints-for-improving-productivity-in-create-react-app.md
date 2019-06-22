@@ -48,7 +48,7 @@ vscode上で、[eslint のプラグイン](https://marketplace.visualstudio.com/
 
 に書き換え、`'lego' is not defined.eslint(no-undef)`というエラーになっています。
 
-![](./img/eslint.gif)
+![](/img/eslint.gif)
 
 このようにeslintを導入することで静的解析によってバグを早期に発見することができます。
 
@@ -60,7 +60,7 @@ vscode上で、[eslint のプラグイン](https://marketplace.visualstudio.com/
 
 下記の画像では[pretterのプラグイン](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)のプラグインをインストールし`vscode`の保存時にフォーマットするという設定を行うことで、保存時に自動的にフォーマットがかかっています。
 
-![](./img/pretter.gif)
+![](/img/pretter.gif)
 
 このようにpretterを導入することでコードのスタイルの一貫性を保つことができます。
 
@@ -82,7 +82,7 @@ Reactのタブが選択できるようになります。
 
 ### props, stateを確認したり書き換える
 
-![](./img/react-developer-tools1.gif)
+![](/img/react-developer-tools1.gif)
 
 上記にあるようにReactコンポーネントを選択して、コンポーネントの値を確認したり、書き換えることができます。(例ではpropsを書き換えています。)
 
@@ -111,7 +111,7 @@ React Developer Toolsを使ってコンポーネントを調べることで、�
 
 `props`, `state`を調べる際や、`render`内を調べる際にブレークポイントを呼び出し元から貼って1つづつ順を追って値を確認していくことで実際に値がどのように渡されているのか、変わっているのかというところをアプリを動かしながら見ることができます。
 
----
+- - -
 
 上記の2つ紹介した使い方だけでも、うまく使いこなすことで効率的にデバッグを行うことができます。
 なにかおかしい,うまくいかないと思ったときにこの「React Developer Tools」の機能を思い出して使ってみてください。
@@ -127,15 +127,15 @@ Reactの開発に限定した話ではなく、**エディターは他にもい�
 
 **今回はエディターや開発者向けのブラウザの機能などを紹介しましたが、開発をサポートしてくれるものは他にもたくさんあります。ツールにこだわったり、理解を深めることで生産性は上げられます。楽しく開発するためにも日々、ツールへの理解を深めていきましょう。**
 
----
+- - -
 
 ## おまけ
 
 ほかにも個人的に開発に欠かせないアプリ
 
-- クリップボードの履歴アプリ
-  - win: [Clibor](https://www.vector.co.jp/soft/winnt/util/se472890.html)
-  - mac: [Clipy](https://clipy-app.com/)
-- 画面分割アプリ
-  - win: `win`key + `矢印`key で可能
-  - mac: [ShiftIt](https://github.com/fikovnik/ShiftIt)
+* クリップボードの履歴アプリ
+  * win: [Clibor](https://www.vector.co.jp/soft/winnt/util/se472890.html)
+  * mac: [Clipy](https://clipy-app.com/)
+* 画面分割アプリ
+  * win: `win`key + `矢印`key で可能
+  * mac: [ShiftIt](https://github.com/fikovnik/ShiftIt)
