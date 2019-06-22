@@ -102,7 +102,8 @@ module.exports = {
             options: {
               target: "_blank"
             }
-          }
+          },
+          "gatsby-remark-copy-linked-files"
         ]
       }
     },
