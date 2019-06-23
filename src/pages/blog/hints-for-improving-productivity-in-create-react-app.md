@@ -69,9 +69,9 @@ vscode上で、[eslint のプラグイン](https://marketplace.visualstudio.com/
 ## React 開発者ツールを使おう
 
 [React Developer Tools
-](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ja)を使うことで意図しない動きに対しての原因の追求がスムーズになります。
+](https://github.com/facebook/react-devtools)を使うことで意図しない動きに対しての原因の追求がスムーズになります。
 
-Google Chrome 拡張機能から「React Developer Tools」を検索してインストールするとReactの開発環境でGoogle Chromeの開発者ツールから、
+Google Chrome 拡張機能から「React Developer Tools」を検索して[こちらのページ](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ja)からインストールするとReactの開発環境でGoogle Chromeの開発者ツールから、
 Reactのタブが選択できるようになります。
 
 ![](./img/react-developer-tools.jpg)
