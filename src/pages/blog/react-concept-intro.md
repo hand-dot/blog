@@ -6,6 +6,7 @@ description: reactを実際に書いていくにあたっての導入として�
 thumbnail: /img/react.png
 ---
 https://www.taniarascia.com/getting-started-with-react/
+https://egghead.io/courses/the-beginner-s-guide-to-react
 
 https://ja.reactjs.org/
 
@@ -15,5 +16,10 @@ https://ja.reactjs.org/docs/glossary.html
 
 
 - 用語の整理
-- コンポーネントの書き方
-- 
+- JSXとReact要素
+- コンポーネント
+  - 関数
+  - クラスベース1
+  - クラスベース2
+- state
+- props
