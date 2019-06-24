@@ -12,3 +12,8 @@ https://ja.reactjs.org/
 https://ja.reactjs.org/docs/thinking-in-react.html
 
 https://ja.reactjs.org/docs/glossary.html
+
+
+- 用語の整理
+- コンポーネントの書き方
+- 
