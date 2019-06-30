@@ -28,13 +28,31 @@ thumbnail: /img/react.png
   - 関数
   - クラスベース1
   - クラスベース2(Class Fields and Static Properties)
-- props
-  - コンポーネントの再利用をするためのデータ
-- state
-  - ユーザー操作や時間経過などで動的に変化するデータを扱う
+- props&state
+  - props:コンポーネントの再利用をするためのデータ
+  - state:ユーザー操作や時間経過などで動的に変化するデータ
 - Form
   - props,stateとは逆方向のデータフローを追加する
-- 用語の整理
+- 用語の整理とまとめ
+
+
+
+---
+
+# JSXとReact要素
+---
+
+# コンポーネント
+---
+
+# props&state
 
 React には 2 種類の「モデル」データが存在します。props と state です。このふたつの相違を理解するのは重要なことです。
+
+---
+
+# Form
+---
+
+# 用語の整理とまとめ
 
