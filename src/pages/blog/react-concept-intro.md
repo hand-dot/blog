@@ -22,6 +22,6 @@ react公式サイトの用語集: https://ja.reactjs.org/docs/glossary.html
 - コンポーネント
   - 関数
   - クラスベース1
-  - クラスベース2
-- state
+  - クラスベース2(Class Fields and Static Properties)
 - props
+- state
