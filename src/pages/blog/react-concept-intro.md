@@ -5,15 +5,17 @@ date: 2019-06-23T14:04:34.154Z
 description: reactを実際に書いていくにあたっての導入としてこの記事を書きました。
 thumbnail: /img/react.png
 ---
-https://www.taniarascia.com/getting-started-with-react/
-https://egghead.io/courses/the-beginner-s-guide-to-react
+react入門のためのまとまったブログ: https://www.taniarascia.com/getting-started-with-react/
 
-https://ja.reactjs.org/
+react入門のための動画: https://egghead.io/courses/the-beginner-s-guide-to-react
 
-https://ja.reactjs.org/docs/thinking-in-react.html
+react公式サイト: https://ja.reactjs.org/
 
-https://ja.reactjs.org/docs/glossary.html
+react公式サイトの作業の流れ: https://ja.reactjs.org/docs/thinking-in-react.html
 
+react公式サイトの用語集: https://ja.reactjs.org/docs/glossary.html
+
+---
 
 - 用語の整理
 - JSXとReact要素
