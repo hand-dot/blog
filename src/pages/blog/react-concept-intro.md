@@ -31,6 +31,7 @@ thumbnail: /img/react.png
 - props&state
   - props:コンポーネントの再利用をするためのデータ
   - state:ユーザー操作や時間経過などで動的に変化するデータ
+- ライフサイクル&ref
 - Form
   - props,stateとは逆方向のデータフローを追加する
 - 用語の整理とまとめ
@@ -50,6 +51,11 @@ thumbnail: /img/react.png
 React には 2 種類の「モデル」データが存在します。props と state です。このふたつの相違を理解するのは重要なことです。
 
 ---
+
+# ライフサイクル&ref
+
+---
+
 
 # Form
 ---
