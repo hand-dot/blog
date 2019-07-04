@@ -68,9 +68,10 @@ JSXを利用すると**見た目**はHTMLにかなり近くなります。後述
 - `onclick`などのHTMLの属性は`onClick`のようにキャメルケースで記述してください。
 - 閉じタグが存在しないタグ(閉じタグが省略可能なタグ)の`img`や`input`などはスラッシュで終わるようにしてください。例 `<img />`
 
-そして先ほど**見た目**はHTMLに近くなると言いましたが、Babelにコンパイルされたものを見ればわかると思いますが、コンパイル後JSX式は普通のJavaScriptの関数呼び出しに変換され、JavaScriptオブジェクトへと評価されます。本質的にはJavaScriptなので、あらゆるJavaScriptの式をJSX内で利用することができます。
+そして先ほど**見た目**はHTMLに近くなると言いましたが、Babelにコンパイルされたものを見ればわかると思いますが、コンパイル後JSX式は普通のJavaScriptの関数呼び出しに変換され、JavaScriptオブジェクトへと評価されます。本質的にはJavaScriptなので、あらゆる**JavaScriptの式**をJSX内で中括弧に囲んで利用することができます。
 
 実際にどういうことができるのか確認してみましょう。
+下記では`users`という姓と名を持ったオブジェクトの配列のデータを使用して、リスト表示しています。ツイッターのフォロワー一覧などをイメージしていただければと思います。
 
 ```javascript:title= 
 function formatName(user) {
@@ -89,6 +90,10 @@ const element = <ul> {users.map(user => (<li>{formatName(user)}</li>))}  </ul>;
 
 ReactDOM.render(element, document.getElementById('root'));
 ```
+
+よくある間違いとしては中括弧で評価できるのは**式**なのですが、**文**を使用してしまい、動かないというケースです。
+
+
 
 - - -
 
