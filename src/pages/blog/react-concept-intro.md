@@ -21,11 +21,7 @@ memo
 
 ここでは何回かの講義に分けて、シンプルなログインフォームを作成し、Reactの機能を学んでいきます。
 
-
-
 ![](/img/react-form.gif)
-
-
 
 - - -
 
@@ -50,30 +46,37 @@ memo
 
 ここではJSX,React要素について学んでいきます。
 
-```javascript:title= 
+```javascript:title=
 const element = <h1 className="heading">HelloWord!</h1>
 ```
 
 上記のHTMLのようなものはJSXと言います。JavaScriptの構文の拡張です。
 実際にはBabelによって下記のようにコンパイルされます。
 
-```javascript:title= 
+```javascript:title=
 const element = React.createElement('h1', { className: 'heading' }, 'HelloWord!')
 ```
 
 JSXを利用すると**見た目**はHTMLにかなり近くなります。後述するポイントを除けばHTMLを書いたことのある人であれば同じように書いていくことができると思います。
 
 注意するポイントは3つです。
-- `class`はJavaScript上で[予約語](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Reserved_Words)です。そのため、CSSクラスのスタイルを指定するときは上記の例のように`className`と記述します。
-- `onclick`などのHTMLの属性は`onClick`のようにキャメルケースで記述してください。
-- 閉じタグが存在しないタグ(閉じタグが省略可能なタグ)の`img`や`input`などはスラッシュで終わるようにしてください。例 `<img />`
+
+* `class`はJavaScript上で[予約語](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Reserved_Words)です。そのため、CSSクラスのスタイルを指定するときは上記の例のように`className`と記述します。
+* `onclick`などのHTMLの属性は`onClick`のようにキャメルケースで記述してください。
+* 閉じタグが存在しないタグ(閉じタグが省略可能なタグ)の`img`や`input`などはスラッシュで終わるようにしてください。例 `<img />`
 
 そして先ほど**見た目**はHTMLに近くなると言いましたが、Babelにコンパイルされたものを見ればわかると思いますが、コンパイル後JSX式は普通のJavaScriptの関数呼び出しに変換され、JavaScriptオブジェクトへと評価されます。本質的にはJavaScriptなので、あらゆる**JavaScriptの式**をJSX内で中括弧に囲んで利用することができます。
 
 実際にどういうことができるのか確認してみましょう。
-下記では`users`という姓と名を持ったオブジェクトの配列のデータを使用して、リスト表示しています。ツイッターのフォロワー一覧などをイメージしていただければと思います。
+下記では`users`という姓と名を持ったオブジェクトの配列のデータを使用して、リスト表示しています。
 
-```javascript:title= 
+表示するとこんな感じです。
+
+![](/img/スクリーンショット-2019-07-05-0.32.59.png)
+
+コードをみていきましょう。
+
+```javascript:title=
 function formatName(user) {
   return user.firstName + ' ' + user.lastName;
 }
@@ -91,7 +94,25 @@ const element = <ul> {users.map(user => (<li>{formatName(user)}</li>))}  </ul>;
 ReactDOM.render(element, document.getElementById('root'));
 ```
 
-よくある間違いとしては中括弧で評価できるのは**式**なのですが、**文**を使用してしまい、動かないというケースです。
+よくある間違いとしては中括弧で評価できるのは**式**なのですが、**文**を使用してしまい、動かないというケースです。(式と文に関しては[こちら](https://jsprimer.net/basic/statement-expression/)で詳細をみていただけます。)
+
+では次はログインしていたら、「ようこそ！」と表示し、そうでなければ「ログインしてください」と表示するコンポーネントを作成するとしましょう。
+
+```javascript:title=
+
+const login = true;
+
+const element = <div>
+  {if(login){
+    return <h1>ようこそ!</h1>
+  }else{
+    return <h1>ログインしてください</h1>
+  }}
+</div>
+
+ReactDOM.render(element, document.getElementById('root'));
+```
+
 
 
 
