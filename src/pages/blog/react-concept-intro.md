@@ -77,27 +77,17 @@ function formatName(user) {
   return user.firstName + ' ' + user.lastName;
 }
 
+const me = { firstName: '山田', lastName: '太郎' };
+
 const users = [
-  {
-    firstName: 'Harper',
-    lastName: 'Perez'
-  },
-  {
-    firstName: 'Harper',
-    lastName: 'Perez'
-  },
+  { firstName: '田中', lastName: '太郎' },
+  { firstName: '山田', lastName: '花子' }
 ];
 
-const element = (
-  <h1>
-    {users.map( user => (<p>Hello, {formatName(user)}!</p>))}
-  </h1>
-);
+const element = <ul> {users.map(user => (<li>{formatName(user)}</li>))}  </ul>;
 
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
+
+ReactDOM.render(element, document.getElementById('root'));
 ```
 
 - - -
