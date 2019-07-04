@@ -61,14 +61,14 @@ const element = <h1 className="heading">HelloWord!</h1>
 const element = React.createElement('h1', { className: 'heading' }, 'HelloWord!')
 ```
 
-JSXを利用すると**見た目**はHTMLにかなり近くなります。後述するポイントを除けばHTMLを書いたことのある人であれば簡単にコンポーネントを作成することができると思います。
+JSXを利用すると**見た目**はHTMLにかなり近くなります。後述するポイントを除けばHTMLを書いたことのある人であれば同じように書いていくことができると思います。
 
 注意するポイントは3つです。
 - `class`はJavaScript上で[予約語](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Reserved_Words)です。そのため、CSSクラスのスタイルを指定するときは上記の例のように`className`と記述します。
 - `onclick`などのHTMLの属性は`onClick`のようにキャメルケースで記述してください。
 - 閉じタグが存在しないタグ(閉じタグが省略可能なタグ)の`img`や`input`などはスラッシュで終わるようにしてください。例 `<img />`
 
-
+そして先ほど**見た目**はHTMLに近くなると言いましたが、Babelにコンパイルされたものを見ればわかると思いますが、コンパイル後JSX式は普通のJavaScriptの関数呼び出しに変換され、JavaScriptオブジェクトへと評価されます。
 
 - - -
 
