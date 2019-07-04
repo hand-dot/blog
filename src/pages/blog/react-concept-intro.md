@@ -72,6 +72,7 @@ JSXを利用すると**見た目**はHTMLにかなり近くなります。後述
 
 実際にどういうことができるのか確認してみましょう。
 
+```javascript:title= 
 function formatName(user) {
   return user.firstName + ' ' + user.lastName;
 }
@@ -91,6 +92,7 @@ ReactDOM.render(
   element,
   document.getElementById('root')
 );
+```
 
 - - -
 
