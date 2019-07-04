@@ -90,27 +90,40 @@ ReactDOM.render(
 
 ```javascript:title=
 function formatName(user) {
-  return user.firstName + ' ' + user.lastName;
+  return user.firstName + " " + user.lastName;
 }
 
-const me = { firstName: '山田', lastName: '太郎' };
-
 const users = [
-  { firstName: '田中', lastName: '太郎' },
-  { firstName: '山田', lastName: '花子' }
+  { firstName: "田中", lastName: "太郎" },
+  { firstName: "山田", lastName: "花子" }
 ];
-
-const element = <ul> {users.map((user, index) => (<li>{index+1}人目: {formatName(user)}</li>))}  </ul>;
+const element = (
+  <ul>
+    {users.map((user, index) => (
+      <li>
+        {index + 1}人目: {formatName(user)}
+      </li>
+    ))}
+  </ul>
+);
 
 
 ReactDOM.render(element, document.getElementById('root'));
 ```
 
-TODO 詳細
+ここでは中括弧を3つ使って下記のことを行なっています。1つ1つみていきましょう。
+
+まずはじめに、`users`の配列を`users.map`の部分で中括弧を書いて実行しています。
+
+そのあとに、`li`タグ内でまた、中括弧が2つ出てきます。中では下記のことを行なっています。
+- map関数のcallbackに渡される`index`に1を足して、「1人目、2人目」と表示されるようにしています。
+- `formatName`関数にmap関数のcallbackに渡される`user`を引数にセットし実行し　「田中 太郎、山田 花子」と表示されるようにしています。
+
+このように
 
 - - -
 
-次に、よくある間違いをみていきましょう。中括弧で評価できるのは**式**なのですが、**文**を使用してしまい、動かないというケースです。(式と文に関しては[こちら](https://jsprimer.net/basic/statement-expression/)で詳細をみていただけます。)
+次に、よくある間違いをみていきましょう。中括弧で利用できるのは**式**なのですが、**文**を使用してしまい、動かないというケースです。(式と文に関しては[こちら](https://jsprimer.net/basic/statement-expression/)で詳細をみていただけます。)
 
 例えばログインしていたら、「ようこそ！」と表示し、そうでなければ「ログインしてください」と表示するコンポーネントを作成するとしましょう。
 
@@ -131,7 +144,7 @@ ReactDOM.render(element, document.getElementById('root'));
 残念ながらこれはエラーになってしまいます。
 理由は**if文を使っているからです。**先ほど説明したようにJSX内では「あらゆるJavaScriptの式をJSX内で中括弧に囲んで利用することができます。」と説明しました。
 
-このようなケースでは[条件（三項）演算子](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Expressions_and_Operators#Conditional_(ternary)_operator)を利用することで正しく表示することができます。
+このようなケースでは[三項演算子](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Expressions_and_Operators#Conditional_(ternary)_operator)を利用することで正しく表示することができます。
 
 ```javascript:title=
 const login = true;
@@ -143,9 +156,13 @@ const element = <div>
 ReactDOM.render(element, document.getElementById('root'));
 ```
 
+評価した結果を変数に代入できるものは式であるという理解で問題ありませんが、
+**if文**は評価した結果は変数に代入できませんが、三項演算子はできますので正しく表示できます。
+
+React要素がうまく書けない理由としてJavaScriptの式と文の理解が不十分である場合があります。
 **式**と**文**に関して、理解が曖昧な場合は[こちら](https://jsprimer.net/basic/statement-expression/)の記事を参考に理解をしておいてください。
 
-
+そして次に学ぶ**コンポーネント**はReact要素を返却するものです。React要素の書き方をしっかり理解しておいてください。
 
 - - -
 
