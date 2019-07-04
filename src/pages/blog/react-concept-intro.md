@@ -119,7 +119,7 @@ ReactDOM.render(element, document.getElementById('root'));
 - map関数のcallbackに渡される`index`に1を足して、「1人目、2人目」と表示されるようにしています。
 - `formatName`関数にmap関数のcallbackに渡される`user`を引数にセットし実行し　「田中 太郎、山田 花子」と表示されるようにしています。
 
-このように
+このようにJavaScriptの式を利用して自由に記述できます。
 
 - - -
 
