@@ -68,7 +68,29 @@ JSXを利用すると**見た目**はHTMLにかなり近くなります。後述
 - `onclick`などのHTMLの属性は`onClick`のようにキャメルケースで記述してください。
 - 閉じタグが存在しないタグ(閉じタグが省略可能なタグ)の`img`や`input`などはスラッシュで終わるようにしてください。例 `<img />`
 
-そして先ほど**見た目**はHTMLに近くなると言いましたが、Babelにコンパイルされたものを見ればわかると思いますが、コンパイル後JSX式は普通のJavaScriptの関数呼び出しに変換され、JavaScriptオブジェクトへと評価されます。
+そして先ほど**見た目**はHTMLに近くなると言いましたが、Babelにコンパイルされたものを見ればわかると思いますが、コンパイル後JSX式は普通のJavaScriptの関数呼び出しに変換され、JavaScriptオブジェクトへと評価されます。本質的にはJavaScriptなので、あらゆるJavaScriptの式をJSX内で利用することができます。
+
+実際にどういうことができるのか確認してみましょう。
+
+function formatName(user) {
+  return user.firstName + ' ' + user.lastName;
+}
+
+const user = {
+  firstName: 'Harper',
+  lastName: 'Perez'
+};
+
+const element = (
+  <h1>
+    Hello, {formatName(user)}!
+  </h1>
+);
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
 
 - - -
 
