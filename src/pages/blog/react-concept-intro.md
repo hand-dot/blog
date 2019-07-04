@@ -55,11 +55,18 @@ const element = <h1 className="heading">HelloWord!</h1>
 ```
 
 上記のHTMLのようなものはJSXと言います。JavaScriptの構文の拡張です。
-実際にはBabelによってコンパイルされ、
+実際にはBabelによって下記のようにコンパイルされます。
 
 ```javascript:title= 
 const element = React.createElement('h1', { className: 'heading' }, 'HelloWord!')
 ```
+
+JSXを利用すると**見た目**はHTMLにかなり近くなります。後述するポイントを除けばHTMLを書いたことのある人であれば簡単にコンポーネントを作成することができると思います。
+
+注意するポイントは3つです。
+- `class`はJavaScript上で予約語です。
+-
+-
 
 
 
