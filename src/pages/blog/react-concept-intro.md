@@ -131,7 +131,21 @@ ReactDOM.render(element, document.getElementById('root'));
 残念ながらこれはエラーになってしまいます。
 理由は**if文を使っているからです。**先ほど説明したようにJSX内では「あらゆるJavaScriptの式をJSX内で中括弧に囲んで利用することができます。」と説明しました。
 
-このように
+このようなケースでは[条件（三項）演算子](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Expressions_and_Operators#Conditional_(ternary)_operator)を利用することで正しく表示することができます。
+
+```javascript:title=
+const login = true;
+
+const element = <div>
+  {login ? <h1>ようこそ!</h1> : <h1>ログインしてください</h1>}
+</div>
+
+ReactDOM.render(element, document.getElementById('root'));
+```
+
+**式**と**文**に関して、理解が曖昧な場合は[こちら](https://jsprimer.net/basic/statement-expression/)の記事を参考に理解をしておいてください。
+
+
 
 - - -
 
