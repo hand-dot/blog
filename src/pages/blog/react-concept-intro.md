@@ -5,7 +5,9 @@ date: 2019-06-23T14:04:34.154Z
 description: reactを実際に書いていくにあたっての導入としてこの記事を書きました。
 thumbnail: /img/react.png
 ---
-入門のためのまとまったブログ: https://www.taniarascia.com/getting-started-with-react/
+memo
+
+入門のためのまとまったブログ:https://www.taniarascia.com/getting-started-with-react/
 
 入門のための動画: https://egghead.io/courses/the-beginner-s-guide-to-react
 
@@ -45,6 +47,9 @@ thumbnail: /img/react.png
 - - -
 
 # JSXとReact要素
+
+ここではJSX,React要素について学んでいきます。
+
 
 - - -
 
