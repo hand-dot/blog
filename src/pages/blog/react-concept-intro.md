@@ -50,7 +50,7 @@ memo
 const element = <h1 className="heading">HelloWord!</h1>
 ```
 
-上記のHTMLのようなものはJSXと言います。JavaScriptの構文の拡張です。
+上記のHTMLのようなものは**JSX**で書かれた**React要素**と言います。JSXはJavaScriptの構文の拡張です。
 実際にはBabelによって下記のようにコンパイルされます。
 
 ```javascript:title=
@@ -67,8 +67,20 @@ JSXを利用すると**見た目**はHTMLにかなり近くなります。後述
 
 そして先ほど**見た目**はHTMLに近くなると言いましたが、Babelにコンパイルされたものを見ればわかると思いますが、コンパイル後JSX式は普通のJavaScriptの関数呼び出しに変換され、JavaScriptオブジェクトへと評価されます。本質的にはJavaScriptなので、あらゆる**JavaScriptの式**をJSX内で中括弧に囲んで利用することができます。
 
-実際にどういうことができるのか確認してみましょう。
-下記では`users`という姓と名を持ったオブジェクトの配列のデータを使用して、リスト表示しています。
+一番簡単な例はこんな感じです。
+
+```javascript:title=
+const name = 'Josh Perez';
+const element = <h1>Hello, {name}</h1>;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
+もう少し発展してどういうことができるのか確認してみましょう。
+下記では`users`という姓と名を持ったオブジェクトの配列のデータを使用して、リスト表示するReact要素を書いてみたいと思います。
 
 表示するとこんな感じです。
 
@@ -88,15 +100,19 @@ const users = [
   { firstName: '山田', lastName: '花子' }
 ];
 
-const element = <ul> {users.map(user => (<li>{formatName(user)}</li>))}  </ul>;
+const element = <ul> {users.map((user, index) => (<li>{index+1}人目: {formatName(user)}</li>))}  </ul>;
 
 
 ReactDOM.render(element, document.getElementById('root'));
 ```
 
-よくある間違いとしては中括弧で評価できるのは**式**なのですが、**文**を使用してしまい、動かないというケースです。(式と文に関しては[こちら](https://jsprimer.net/basic/statement-expression/)で詳細をみていただけます。)
+TODO 詳細
 
-では次はログインしていたら、「ようこそ！」と表示し、そうでなければ「ログインしてください」と表示するコンポーネントを作成するとしましょう。
+---
+
+次に、よくある間違いをみていきましょう。中括弧で評価できるのは**式**なのですが、**文**を使用してしまい、動かないというケースです。(式と文に関しては[こちら](https://jsprimer.net/basic/statement-expression/)で詳細をみていただけます。)
+
+例えばログインしていたら、「ようこそ！」と表示し、そうでなければ「ログインしてください」と表示するコンポーネントを作成するとしましょう。
 
 ```javascript:title=
 
@@ -112,6 +128,9 @@ const element = <div>
 
 ReactDOM.render(element, document.getElementById('root'));
 ```
+
+残念ながらこれはエラーになってしまいます。
+理由は**if文を使っているからです。**先ほど説明したようにJSX内では「あらゆるJavaScriptの式をJSX内で中括弧に囲んで利用することができます。」と説明しました。
 
 
 
