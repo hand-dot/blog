@@ -84,7 +84,7 @@ ReactDOM.render(
 
 表示するとこんな感じです。
 
-![](/img/スクリーンショット-2019-07-05-0.32.59.png)
+![](/img/スクリーンショット-2019-07-05-1.33.42.png)
 
 コードをみていきましょう。
 
@@ -108,14 +108,13 @@ ReactDOM.render(element, document.getElementById('root'));
 
 TODO 詳細
 
----
+- - -
 
 次に、よくある間違いをみていきましょう。中括弧で評価できるのは**式**なのですが、**文**を使用してしまい、動かないというケースです。(式と文に関しては[こちら](https://jsprimer.net/basic/statement-expression/)で詳細をみていただけます。)
 
 例えばログインしていたら、「ようこそ！」と表示し、そうでなければ「ログインしてください」と表示するコンポーネントを作成するとしましょう。
 
 ```javascript:title=
-
 const login = true;
 
 const element = <div>
@@ -132,8 +131,7 @@ ReactDOM.render(element, document.getElementById('root'));
 残念ながらこれはエラーになってしまいます。
 理由は**if文を使っているからです。**先ほど説明したようにJSX内では「あらゆるJavaScriptの式をJSX内で中括弧に囲んで利用することができます。」と説明しました。
 
-
-
+このように
 
 - - -
 
