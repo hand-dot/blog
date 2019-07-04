@@ -50,6 +50,18 @@ memo
 
 ここではJSX,React要素について学んでいきます。
 
+```javascript:title= 
+const element = <h1 className="heading">HelloWord!</h1>
+```
+
+上記のHTMLのようなものはJSXと言います。JavaScriptの構文の拡張です。
+実際にはBabelによってコンパイルされ、
+
+```javascript:title= 
+const element = React.createElement('h1', { className: 'heading' }, 'HelloWord!')
+```
+
+
 
 - - -
 
