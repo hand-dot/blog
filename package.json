@@ -30,7 +30,7 @@
     "lottie-web": "^5.4.4",
     "netlify-cms": "^2.6.1",
     "node-fetch": "^2.3.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "parcel-bundler": "^1.12.2",
     "prismjs": "^1.16.0",
     "prop-types": "^15.7.2",
